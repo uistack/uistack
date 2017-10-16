@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/pages",
+    "description": "Manage uistacks framework pages",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/pages.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Pages\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

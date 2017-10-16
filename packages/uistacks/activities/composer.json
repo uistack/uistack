@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/activities",
+    "description": "Manage UiStacks framework activities",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/activities.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Activities\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

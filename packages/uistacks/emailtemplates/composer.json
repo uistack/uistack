@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/emailtemplates",
+    "description": "Manage uistacks framework emailtemplates",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "me@uistacks.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/emailtemplates.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Emailtemplates\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

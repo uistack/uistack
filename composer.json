@@ -1,0 +1,76 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "intervention/image": "~2.2",
+        "unisharp/laravel-ckeditor": "^4.6",
+        "laravel/socialite": "^2.0",
+        "skovmand/mailchimp-laravel": "^1.0",
+        "artesaos/seotools": "^0.10.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "UiStacks\\Core\\": "packages/uistacks/core/src",
+            "UiStacks\\Media\\": "packages/uistacks/media/src",
+            "UiStacks\\Users\\": "packages/uistacks/users/src",
+            "UiStacks\\Countries\\": "packages/uistacks/countries/src",
+            "UiStacks\\Pages\\": "packages/uistacks/pages/src",
+            "UiStacks\\Banners\\": "packages/uistacks/banners/src",
+            "UiStacks\\Settings\\": "packages/uistacks/settings/src",
+            "UiStacks\\Contactus\\": "packages/uistacks/contactus/src",
+            "UiStacks\\Emailtemplates\\": "packages/uistacks/emailtemplates/src",
+            "UiStacks\\Activities\\": "packages/uistacks/activities/src",
+            "UiStacks\\Stores\\": "packages/uistacks/stores/src",
+            "UiStacks\\Roles\\": "packages/uistacks/roles/src",
+            "UiStacks\\Ads\\": "packages/uistacks/ads/src",
+            "UiStacks\\Faqs\\": "packages/uistacks/faqs/src",
+            "UiStacks\\Articles\\": "packages/uistacks/articles/src",
+            "UiStacks\\Blogs\\": "packages/uistacks/blogs/src",
+            "UiStacks\\Tutorials\\": "packages/uistacks/tutorials/src",
+            "UiStacks\\Tasks\\": "packages/uistacks/tasks/src"
+        },
+        "files": [
+            "app/Libraries/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

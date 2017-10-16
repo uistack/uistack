@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/Widgets",
+    "description": "Manage UiStacks framework Widgets",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/widgets.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Widgets\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

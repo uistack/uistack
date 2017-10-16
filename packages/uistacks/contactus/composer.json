@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/contactus",
+    "description": "Manage UiStacks framework pages",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/pages.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Contactus\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

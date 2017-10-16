@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/users",
+    "description": "Manage UiStacks framework users",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/users.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Users\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

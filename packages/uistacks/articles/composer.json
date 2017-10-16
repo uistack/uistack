@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/Articles",
+    "description": "Manage uistacks framework Articles",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "me@uistacks.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/articles.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "uistacks\\Articles\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

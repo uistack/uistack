@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/core",
+    "description": "Manage UiStacks framework core",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/core.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Core\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

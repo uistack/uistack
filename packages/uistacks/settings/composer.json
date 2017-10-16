@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/settings",
+    "description": "Manage UiStacks framework settings",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/settings.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Settings\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/ads",
+    "description": "Manage UiStacks framework ads",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/ads.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Ads\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

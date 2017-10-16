@@ -1,0 +1,23 @@
+{
+    "name": "innoflame/pages",
+    "description": "Manage innoflame framework pages",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "me@innoflame.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:innoflame/pages.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "innoflame\\Pages\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

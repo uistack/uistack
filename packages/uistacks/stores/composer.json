@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/stores",
+    "description": "Manage UiStacks framework ads",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Stores\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

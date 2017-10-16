@@ -1,0 +1,76 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Media 
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are the default lines which match reasons
+    | that are given by media
+    |
+    */
+    'all' => 'सब',
+    'create' => 'बनाना',
+    'select' => 'चुनें',
+    'id' => 'आईडी',
+    'image' => 'चित्र',
+    'author' => 'लेखक',
+    'last_update_by' => 'आखरी अपडेट',
+    'created_at' => 'रचना तिथि',
+    'updated_at' => 'अद्यतन दिनांक',
+    'operations' => 'संचालन',
+    'edit' => 'संपादित करें',
+    'delete' => 'हटाना',
+    'saved_successfully' => 'सफलतापूर्वक रक्षित कर लिया गया',
+    'updated_successfully' => 'अद्यतन सफलतापूर्ण हो गया',
+    'deleted_successfully' => 'सफलतापूर्वक मिटाया गया',
+    'not_found' => 'रिकॉर्ड नहीं मिला.',
+    'confirm_delete' => 'रिकॉर्ड को हटाने की पुष्टि करें',
+    'please_insert_username' => 'कृपया, ईमेल या फ़ोन डालें',
+    'please_insert_password' => 'कृपया, पासवर्ड डालें',
+    'user_not_active' => 'उपयोगकर्ता सक्रिय नहीं है',
+    'invalid_login_data' => 'अवैध लॉग इन डेटा',
+    'settings' => 'सेटिंग्स',
+    'setting' => 'सेटिंग्स',
+    'main_information' => 'प्रमुख सूचना',
+    'name' => 'साइट का नाम',
+    'email' => 'ईमेल',
+    'phone' => 'फ़ोन',
+    'telephone' => 'Telephone',
+    'zipcode' => 'Zipcode',
+    'slogan' => 'आदर्श-वाक्य',
+    'smtp' => 'SMTP',
+    'host' => 'Host',
+    'port' => 'Port',
+    'address' => 'पता',
+    'paddress' => 'पता',
+    'username' => 'उपयोगकर्ता नाम',
+    'password' => 'पासवर्ड',
+    'encryption' => 'एन्क्रिप्शन',
+    'driver' => 'चालक',
+    'accounts' => 'सामाजिक खाते',
+    'facebook' => 'फेसबुक',
+    'twitter' => 'ट्विटर',
+    'gplus' => 'गूगल प्लस',
+    'instagram' => 'इंस्टाग्राम',
+    'links' => 'ऐप्स लिंक',
+    'android' => 'एंड्रॉयड',
+    'ios' => 'आईओएस',
+    'seo' => 'एसईओ',
+    'keywords' => 'कीवर्ड',
+    'description' => 'विवरण',
+    'fcm' => 'FCM',
+    'server_key' => 'सर्वर कुंजी',
+    'sms' => 'SMS Wesal',
+    'sender' => 'प्रेषक',
+    'url' => 'Url',
+    'maintenance_mode' => 'Maintenance Mode',
+    'activate_maintenance_mode' => 'Yes',
+    'inactivate_maintenance_mode' => 'No',
+    'bank' => 'बैंक जानकारी',
+    'bank_name' => 'बैंक का नाम',
+    'bank_account_number' => 'बैंक खाता नाम',
+    'bank_account_owner_name' => 'बैंक खाता स्वामी का नाम',
+];

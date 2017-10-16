@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/countries",
+    "description": "Manage UiStacks framework ads",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/countries.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Countries\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/media",
+    "description": "Manage UiStacks framework media",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/media.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Media\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
