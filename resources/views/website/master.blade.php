@@ -105,5 +105,6 @@ Logo asset download End
     {{--}--}}
 {{--</script>--}}
 <!--end Control Case ASV PCI code-->
+@yield('footer')
 </body>
 </html>

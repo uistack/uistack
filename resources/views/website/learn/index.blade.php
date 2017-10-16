@@ -5,128 +5,22 @@
 @endsection
 @section('content')
     <div id="cb-wrapper-api-docs" class="">
-        <div class="navbar navbar-fixed-top" data-swiftype-index='false'>
-            <div class="container">
-                <div class="cb-nav-container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle pull-left" id="cb-sidebar-toggle">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="/docs/api" class="hidden-md hidden-lg">
-                            <div class="navbar-brand">
-                                <img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" alt="ChargeBee API Documentation" class="img-responsive" width="28">
-                            </div>
-                            <div class="navbar-brand-title">API</div>
-                        </a>
-                        <button type="button" class="navbar-toggle" id="cb-override" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <div class="vspace-xs">
-                            <ul class="nav navbar-nav navbar-left">
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=curl" title="">
-                                        CURL
-                                    </a></li>
-
-                                <li class=" active"><a data-lang="lang" rel="nofollow" href="?lang=php" title="">
-                                        PHP
-                                    </a></li>
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=ruby" title="">
-                                        RUBY
-                                    </a></li>
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=python" title="">
-                                        PYTHON
-                                    </a></li>
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=java" title="">
-                                        JAVA
-                                    </a></li>
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=dotnet" title="">
-                                        .NET
-                                    </a></li>
-
-                                <li class=""><a data-lang="lang" rel="nofollow" href="?lang=node" title="">
-                                        NODE
-                                    </a></li>
-
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-
-                                <li>
-                                    <a href="https://app.chargebee.com/login">Sign in</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.chargebee.com/trial-signup.html" class="btn-flat">Sign up</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="cb-scrollmenu-container hidden-sm hidden-xs" id="cb-scroll-menu">
-                    <div class="cb-scrollmenu__title">Orders</div>
-                    <div class="cb-scrollmenu__nav">
-                        <div class="cb-scrollmenu__current">Introduction</div>
-                        <ul class="nav" id="cb-nav-group">
-                            <li>
-                                <a href="#order_attributes" class="list-group-item">
-                                    Order attributes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#retrieve_an_order" class="list-group-item">
-                                    Retrieve an order
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#create_an_order" class="list-group-item">
-                                    Create an order
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#list_orders" class="list-group-item">
-                                    List orders
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#update_an_order" class="list-group-item">
-                                    Update an order
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cb-notify hidden-md hidden-lg cb-notify--light"><b>You are viewing the documentation for Chargebee API V2</b>. If you're using the older version (V1), click <a href="https://apidocs.chargebee.com/docs/api/v1">here</a>.</div>
+        @include('website.regions.learn-header')
         <div id="cb-container" class="container">
             <div id="cb-sidebar" data-swiftype-index="false">
                 <div id="cb-sidebar-overlay"></div>
                 <div id="cb-guide">
                     <div class="cb-sidebar-header hidden-sm hidden-xs">
                         <div class="cb-sidebar-logo">
-                            <a href="/docs/api">
+                            <a href="{{ url("/") }}">
                                 <span><img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" alt="ChargeBee API Documentation" width="24" style="height:24px;"></span>
                                 <span class="cb-sidebar-logo-title">API</span>
                             </a>
                         </div>
-                        <div class="cb-sidebar-version">
-
-                            <a href="https://apidocs.chargebee.com/docs/api"  class="active">V2</a>
-                            <a href="https://apidocs.chargebee.com/docs/api/v1">V1</a>
-
-                        </div>
+                        {{--<div class="cb-sidebar-version">--}}
+                            {{--<a href="https://apidocs.chargebee.com/docs/api"  class="active">V2</a>--}}
+                            {{--<a href="https://apidocs.chargebee.com/docs/api/v1">V1</a>--}}
+                        {{--</div>--}}
                     </div>
                     <div class="cb-sidebar-divider hidden-sm hidden-xs"></div>
 
@@ -142,7 +36,7 @@
                         </form>
                         <!-- Search template ends here-->
                     </div>
-                    <h4 class="cb-aside-nav-title">Getting Started</h4>
+                    {{--<h4 class="cb-aside-nav-title">Getting Started</h4>--}}
                     <ul class="list-group">
                         <li>
                             <a href="/docs/api" class="list-group-item">
@@ -855,8 +749,6 @@ ChargeBee_Order::create(array(&lt;param name&gt; =&gt; &lt;value&gt;,&lt;param n
                         <h4>Input Parameters</h4>
                     </div>
                     <div class="cb-list-group">
-
-
                         <div class="cb-list cb-list-action">
                             <div class="cb-list-item">
                                 <samp id="list_orders_limit"><a class="cb-link-anchor" href="#list_orders_limit"></a>limit</samp>
@@ -947,8 +839,6 @@ ChargeBee_Order::create(array(&lt;param name&gt; =&gt; &lt;value&gt;,&lt;param n
 
                             </div>
                         </div>
-
-
                         <div class="cb-list">
                             <div class="cb-list-item">
                                 <samp>next_offset</samp>
@@ -965,6 +855,7 @@ ChargeBee_Order::create(array(&lt;param name&gt; =&gt; &lt;value&gt;,&lt;param n
     </div>
 @endsection
 @section('footer')
+    <script src="{{ asset('public/website_assets/js/tp_apidocs.js') }}"></script>
     <script src="{{ asset('public/website_assets/js/tp_swiftype.js') }}"></script>
     <script src="{{ asset('public/website_assets/js/learn.js') }}"></script>
 
