@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="92px" viewBox="0 0 21 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-flag</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="21" height="14" rx="2"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="1" in="SourceAlpha" operator="dilate" result="shadowSpreadInner1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadInner1" result="shadowOffsetInner1"></feOffset>
+            <feGaussianBlur stdDeviation="0" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.14 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-4" x="0.5" y="0.466666667" width="20" height="13.0666667" rx="1"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="1" in="SourceAlpha" operator="dilate" result="shadowSpreadInner1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadInner1" result="shadowOffsetInner1"></feOffset>
+            <feGaussianBlur stdDeviation="0" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0851619112 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-7" x="0" y="0" width="21" height="15" rx="2"></rect>
+        <rect id="path-9" x="0.5" y="0.5" width="20" height="14" rx="1"></rect>
+        <rect id="path-11" x="0" y="0" width="21" height="15" rx="2"></rect>
+        <rect id="path-13" x="0.5" y="0.5" width="20" height="14" rx="1"></rect>
+        <rect id="path-15" x="0" y="0" width="21" height="15" rx="2"></rect>
+        <rect id="path-17" x="0.5" y="0.5" width="20" height="14" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup" transform="translate(-413.000000, -245.000000)">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(413.000000, 190.000000)">
+                <g id="Rectangle-16-Copy-+-Line-+-United-states-+-US" transform="translate(0.000000, 41.000000)">
+                    <g id="United-states-+-US" transform="translate(0.000000, 15.000000)">
+                        <g id="icon-flag">
+                            <g id="US">
+                                <mask id="mask-2" sketch:name="background" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="background" fill="#FFFFFF" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                                <rect id="rectangle" fill="#435DB0" filter="url(#filter-3)" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="0" y="0" width="9" height="6.53333333"></rect>
+                                <path d="M1,0.933333333 L1,1.86666667 L2,1.86666667 L2,0.933333333 L1,0.933333333 L1,0.933333333 Z M3,0.933333333 L3,1.86666667 L4,1.86666667 L4,0.933333333 L3,0.933333333 L3,0.933333333 Z M5,0.933333333 L5,1.86666667 L6,1.86666667 L6,0.933333333 L5,0.933333333 L5,0.933333333 Z M7,0.933333333 L7,1.86666667 L8,1.86666667 L8,0.933333333 L7,0.933333333 L7,0.933333333 Z M6,1.86666667 L6,2.8 L7,2.8 L7,1.86666667 L6,1.86666667 L6,1.86666667 Z M4,1.86666667 L4,2.8 L5,2.8 L5,1.86666667 L4,1.86666667 L4,1.86666667 Z M2,1.86666667 L2,2.8 L3,2.8 L3,1.86666667 L2,1.86666667 L2,1.86666667 Z M1,2.8 L1,3.73333333 L2,3.73333333 L2,2.8 L1,2.8 L1,2.8 Z M3,2.8 L3,3.73333333 L4,3.73333333 L4,2.8 L3,2.8 L3,2.8 Z M5,2.8 L5,3.73333333 L6,3.73333333 L6,2.8 L5,2.8 L5,2.8 Z M7,2.8 L7,3.73333333 L8,3.73333333 L8,2.8 L7,2.8 L7,2.8 Z M1,4.66666667 L1,5.6 L2,5.6 L2,4.66666667 L1,4.66666667 L1,4.66666667 Z M3,4.66666667 L3,5.6 L4,5.6 L4,4.66666667 L3,4.66666667 L3,4.66666667 Z M5,4.66666667 L5,5.6 L6,5.6 L6,4.66666667 L5,4.66666667 L5,4.66666667 Z M7,4.66666667 L7,5.6 L8,5.6 L8,4.66666667 L7,4.66666667 L7,4.66666667 Z M6,3.73333333 L6,4.66666667 L7,4.66666667 L7,3.73333333 L6,3.73333333 L6,3.73333333 Z M4,3.73333333 L4,4.66666667 L5,4.66666667 L5,3.73333333 L4,3.73333333 L4,3.73333333 Z M2,3.73333333 L2,4.66666667 L3,4.66666667 L3,3.73333333 L2,3.73333333 L2,3.73333333 Z" id="stars" fill="#A7B6E7" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                                <path d="M9,0 L9,0.933333333 L21,0.933333333 L21,0 L9,0 L9,0 Z M9,1.86666667 L9,2.8 L21,2.8 L21,1.86666667 L9,1.86666667 L9,1.86666667 Z M9,3.73333333 L9,4.66666667 L21,4.66666667 L21,3.73333333 L9,3.73333333 L9,3.73333333 Z M9,5.6 L9,6.53333333 L21,6.53333333 L21,5.6 L9,5.6 L9,5.6 Z M0,7.46666667 L0,8.4 L21,8.4 L21,7.46666667 L0,7.46666667 L0,7.46666667 Z M0,9.33333333 L0,10.2666667 L21,10.2666667 L21,9.33333333 L0,9.33333333 L0,9.33333333 Z M0,11.2 L0,12.1333333 L21,12.1333333 L21,11.2 L0,11.2 L0,11.2 Z M0,13.0666667 L0,14 L21,14 L21,13.0666667 L0,13.0666667 L0,13.0666667 Z" id="stripe" fill="#ED4C49" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                                <mask id="mask-5" sketch:name="overlay" fill="white">
+                                    <use xlink:href="#path-4"></use>
+                                </mask>
+                                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" sketch:type="MSShapeGroup" xlink:href="#path-4"></use>
+                            </g>
+                            <g id="AU" transform="translate(0.000000, 51.000000)">
+                                <mask id="mask-8" sketch:name="background" fill="white">
+                                    <use xlink:href="#path-7"></use>
+                                </mask>
+                                <use id="background" fill="#1C36AD" filter="url(#filter-6)" sketch:type="MSShapeGroup" xlink:href="#path-7"></use>
+                                <path d="M5,11 L5,10 L6,10 L6,11 L7,11 L7,12 L6,12 L6,13 L5,13 L5,12 L4,12 L4,11 L5,11 L5,11 Z" id="cross" fill="#BDC4E7" sketch:type="MSShapeGroup" mask="url(#mask-8)"></path>
+                                <path d="M14,3 L14,4 L15,4 L15,3 L14,3 L14,3 Z M17,4 L17,5 L18,5 L18,4 L17,4 L17,4 Z M13,6 L13,7 L14,7 L14,6 L13,6 L13,6 Z M16,7 L16,8 L17,8 L17,7 L16,7 L16,7 Z M15,10 L15,11 L16,11 L16,10 L15,10 L15,10 Z" id="circles" fill="#BDC4E7" sketch:type="MSShapeGroup" mask="url(#mask-8)"></path>
+                                <rect id="top-left" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-8)" x="1" y="1" width="9" height="7" rx="1"></rect>
+                                <path d="M5,5 L2,5 L2,4 L5,4 L5,2 L6,2 L6,4 L9,4 L9,5 L6,5 L6,7 L5,7 L5,5 L5,5 Z M7.5,6 L7.5,7 L9,7 L9,6 L7.5,6 L7.5,6 Z M7.5,2 L7.5,3 L9,3 L9,2 L7.5,2 L7.5,2 Z M2,6 L2,7 L3.5,7 L3.5,6 L2,6 L2,6 Z M2,2 L2,3 L3.5,3 L3.5,2 L2,2 L2,2 Z" id="cross" fill="#D72342" sketch:type="MSShapeGroup" mask="url(#mask-8)"></path>
+                                <mask id="mask-10" sketch:name="overlay" fill="white">
+                                    <use xlink:href="#path-9"></use>
+                                </mask>
+                                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" sketch:type="MSShapeGroup" xlink:href="#path-9"></use>
+                            </g>
+                            <g id="CA" transform="translate(0.000000, 76.000000)">
+                                <mask id="mask-12" sketch:name="background" fill="white">
+                                    <use xlink:href="#path-11"></use>
+                                </mask>
+                                <use id="background" fill="#FFFFFF" sketch:type="MSShapeGroup" xlink:href="#path-11"></use>
+                                <rect id="left" fill="#E82E2E" sketch:type="MSShapeGroup" mask="url(#mask-12)" x="0" y="0" width="6" height="15"></rect>
+                                <rect id="right" fill="#E82E2E" sketch:type="MSShapeGroup" mask="url(#mask-12)" x="15" y="0" width="6" height="15"></rect>
+                                <path d="M13,8 L8,8 L8.55555556,7.11111111 L8,6 L9.03448276,6.34482759 L10.5,4 L11.9655172,6.34482759 L13,6 L12.4444444,7.11111111 L13,8 Z M14,8 L7,8 L10,9.71428571 L10,11 L11,11 L11,9.71428571 L14,8 Z" id="ca" fill="#E82E2E" sketch:type="MSShapeGroup" mask="url(#mask-12)"></path>
+                                <mask id="mask-14" sketch:name="overlay" fill="white">
+                                    <use xlink:href="#path-13"></use>
+                                </mask>
+                                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" sketch:type="MSShapeGroup" xlink:href="#path-13"></use>
+                            </g>
+                            <g id="GB" transform="translate(0.000000, 25.000000)">
+                                <mask id="mask-16" sketch:name="background" fill="white">
+                                    <use xlink:href="#path-15"></use>
+                                </mask>
+                                <use id="background" fill="#22438B" sketch:type="MSShapeGroup" xlink:href="#path-15"></use>
+                                <path d="M2.99999997,0.999999962 L0.9736328,1.02636718 L1.00000002,3 L17.9817609,14.0280845 L20.0187781,13.9910681 L19.9817619,12.0280851 L2.99999997,0.999999962 L2.99999997,0.999999962 Z" id="band" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <path d="M2.00000002,1.00000002 L0.999999967,1.99999994 L18.9999994,13.9999996 L20.0000006,13.0000004 L2.00000002,1.00000002 L2.00000002,1.00000002 Z" id="band" fill="#C7152A" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <path d="M17.9999999,1.00000001 L20,0.999999992 L20.0000001,2.99999997 C20.0000001,2.99999997 8.25066254,10.3962123 3.01823819,14.028085 C2.95462366,14.0722405 1.02030163,14.0312631 1.02030163,14.0312631 L0.864800044,12.1277289 L17.9999999,1.00000001 L17.9999999,1.00000001 Z" id="band" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <path d="M19.0428543,0.972170082 L20,1.99999999 L1.9999997,14.0000002 L1.00000001,13 L19.0428543,0.972170082 L19.0428543,0.972170082 Z" id="band" fill="#C7152A" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <path d="M8,1 L13,1 L13,5 L20,5 L20,10 L13,10 L13,14 L8,14 L8,10 L1,10 L1,5 L8,5 L8,1 Z" id="cross" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <path d="M9,1 L12,1 L12,6 L20,6 L20,9 L12,9 L12,14 L9,14 L9,9 L1,9 L1,6 L9,6 L9,1 Z" id="cross" fill="#C7152A" sketch:type="MSShapeGroup" mask="url(#mask-16)"></path>
+                                <mask id="mask-18" sketch:name="overlay" fill="white">
+                                    <use xlink:href="#path-17"></use>
+                                </mask>
+                                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" sketch:type="MSShapeGroup" xlink:href="#path-17"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

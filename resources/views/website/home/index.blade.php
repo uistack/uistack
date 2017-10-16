@@ -32,7 +32,6 @@
         </div>
     </section>
     <section class="support-block">
-
         {{--<hr class="no-mar">--}}
         <div class="text-center">
             <div class="block-title">

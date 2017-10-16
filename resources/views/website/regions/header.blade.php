@@ -14,7 +14,7 @@
                             </a>
 
                             {{--<div id="ch-hiring-badge" class="ch-hiring">--}}
-                                {{--<a href="careers/index.html" target="_blank" class="ch-hiring__label">We're Hiring!</a>--}}
+                            {{--<a href="careers/index.html" target="_blank" class="ch-hiring__label">We're Hiring!</a>--}}
                             {{--</div>--}}
 
                             <a href="{{ url("/") }}" class="ch-nav__logo-icon">
@@ -30,115 +30,62 @@
                                 <div class="ch-dropdown__container">
                                     <div class="ch-dropdown__list">
                                         <!-- =========================================
-                                        Subscription Management start
+                                        Tutorial Management start
                                         ========================================== -->
-                                        <div class="ch-dropdown__item">
-                                            <a href="subscription-management/index.html" class="ch-dropdown__link">
-                                                <!-- animation part start-->
-                                                <div class="ch-dropdown__bg"></div>
-                                                <div class="ch-dropdown__arrow"></div>
-                                                <!-- animation part end-->
-                                                <div class="ch-dropdown__content">
-                                                    <div class="ch-dropdown__header">
-                                                        <div class="ch-dropdown__figure">
-                                                            <img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-subscription.svg" alt="" width="34">
+                                        @php
+                                            $arrCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->take(4)->get();
+                                        @endphp
+                                        {{--{{ dd($arrCourses) }}--}}
+                                        @if(isset($arrCourses))
+                                            @foreach($arrCourses as $course)
+                                                <div class="ch-dropdown__item">
+                                                    <a href="{{ action('LearnController@index',$course->slug) }}" class="ch-dropdown__link">
+                                                        <!-- animation part start-->
+                                                        <div class="ch-dropdown__bg"></div>
+                                                        <div class="ch-dropdown__arrow"></div>
+                                                        <!-- animation part end-->
+                                                        <div class="ch-dropdown__content">
+                                                            <div class="ch-dropdown__header">
+                                                                <div class="ch-dropdown__figure">
+                                                                    {{--<img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-subscription.svg" alt="" width="34">--}}
+                                                                    @if(isset($course->media) && isset($course->media->main_image) && isset($course->media->main_image->styles['thumbnail']))
+                                                                        <img src="{{url('/')}}/{{ $course->media->main_image->styles['thumbnail'] }}" alt="" width="34" >
+                                                                    @else
+                                                                        <img src="{{ asset('images/select_main_img.png') }}" alt="" width="34">
+                                                                    @endif
+                                                                </div>
+                                                                <div class="ch-dropdown__title">{{ $course->trans->name }}</div>
+                                                            </div>
+                                                            <div class="ch-dropdown__desc">
+                                                                {!! $course->trans->description !!}
+                                                            </div>
                                                         </div>
-                                                        <div class="ch-dropdown__title">Subscription Management</div>
-                                                    </div>
-                                                    <div class="ch-dropdown__desc">
-                                                        Plans, Trial Management, Proration, Addons, Coupons, Self-service Portal
-                                                    </div>
+                                                    </a>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <!-- =========================================
-                                        Billing & Invoicing start
-                                        ========================================== -->
-                                        <div class="ch-dropdown__item">
-                                            <a href="recurring-billing-invoicing/index.html" class="ch-dropdown__link">
-                                                <!-- animation part start-->
-                                                <div class="ch-dropdown__bg"></div>
-                                                <div class="ch-dropdown__arrow"></div>
-                                                <!-- animation part end-->
-                                                <div class="ch-dropdown__content">
-                                                    <div class="ch-dropdown__header">
-                                                        <div class="ch-dropdown__figure">
-                                                            <img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-billing.svg" alt="" width="27">
-                                                        </div>
-                                                        <div class="ch-dropdown__title">Billing & Invoicing</div>
-                                                    </div>
-                                                    <div class="ch-dropdown__desc">
-                                                        Invoices, Taxes, Metered Billing, Email Notifications
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- =========================================
-                                        Payments & Accounting start
-                                        ========================================== -->
-                                        <div class="ch-dropdown__item">
-                                            <a href="recurring-payments/index.html" class="ch-dropdown__link">
-                                                <!-- animation part start-->
-                                                <div class="ch-dropdown__bg"></div>
-                                                <div class="ch-dropdown__arrow"></div>
-                                                <!-- animation part end-->
-                                                <div class="ch-dropdown__content">
-                                                    <div class="ch-dropdown__header">
-                                                        <div class="ch-dropdown__figure">
-                                                            <img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-payments.svg" alt="" width="34">
-                                                        </div>
-                                                        <div class="ch-dropdown__title">Payments & Accounting</div>
-                                                    </div>
-                                                    <div class="ch-dropdown__desc">
-                                                        Payment Methods, Dunning Management, Checkout Experience, Multicurrency, Accounting Integrations
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- =========================================
-                                        Reporting & Analytics start
-                                        ========================================== -->
-                                        <div class="ch-dropdown__item">
-                                            <a href="saas-reporting/index.html" class="ch-dropdown__link">
-                                                <!-- animation part start-->
-                                                <div class="ch-dropdown__bg"></div>
-                                                <div class="ch-dropdown__arrow"></div>
-                                                <!-- animation part end-->
-                                                <div class="ch-dropdown__content">
-                                                    <div class="ch-dropdown__header">
-                                                        <div class="ch-dropdown__figure">
-                                                            <img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-reporting.svg" alt="" width="30">
-                                                        </div>
-                                                        <div class="ch-dropdown__title">Reporting & Analytics</div>
-                                                    </div>
-                                                    <div class="ch-dropdown__desc">
-                                                        MRR, CMRR, Refunds, ARPU, Signups, Churn, Lost Opportunities and more.
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- =========================================
+                                        @endforeach
+                                    @endif
+                                    <!-- =========================================
                                         UiStacks updates start
                                         ========================================== -->
-                                        <div class="ch-dropdown__item">
-                                            <a href="recurring-billing-invoicing/new-email-notifications/index.html" class="ch-media">
-                                                <div class="ch-media__figure">
-                                                    <img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/announcement/engage.png" alt="" class="img-responsive">
-                                                </div>
-                                                <div class="ch-media__content">
-                                                    <div class="ch-media__label">
-                                                        Feature
-                                                    </div>
-                                                    <div class="ch-media__action">
-                                                        Enhanced Email Notifications &rarr;
-                                                    </div>
-                                                    <div class="ch-media__desc">
-                                                        Send contextual and personalized emails to your customers.
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <!-- =========================================
+                                    {{--<div class="ch-dropdown__item">--}}
+                                    {{--<a href="recurring-billing-invoicing/new-email-notifications/index.html" class="ch-media">--}}
+                                    {{--<div class="ch-media__figure">--}}
+                                    {{--<img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/announcement/engage.png" alt="" class="img-responsive">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="ch-media__content">--}}
+                                    {{--<div class="ch-media__label">--}}
+                                    {{--Feature--}}
+                                    {{--</div>--}}
+                                    {{--<div class="ch-media__action">--}}
+                                    {{--Enhanced Email Notifications &rarr;--}}
+                                    {{--</div>--}}
+                                    {{--<div class="ch-media__desc">--}}
+                                    {{--Send contextual and personalized emails to your customers.--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--</div>--}}
+                                    <!-- =========================================
                                         UiStacks updates end
                                         ========================================== -->
                                     </div>
@@ -157,23 +104,23 @@
                         <!-- ======================================================================
                         Dropdown for developer section start
                         ======================================================================= -->
-                        {{--<li class="ch-nav__item" data-ch-dd="true">--}}
-                            {{--<div class="ch-nav__dropdown">Developers</div>--}}
-                            {{--<div class="ch-dropdown">--}}
-                                {{--<ul class="ch-dropdown__list">--}}
-                                    {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="https://apidocs.uistacks.com/docs/" class="ch-dropdown__link">API Documentation</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="tutorials/index.html" class="ch-dropdown__link">API Integration Tutorials</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="http://status.uistacks.com/" class="ch-dropdown__link">API Status</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                        <!-- ======================================================================
+                    {{--<li class="ch-nav__item" data-ch-dd="true">--}}
+                    {{--<div class="ch-nav__dropdown">Developers</div>--}}
+                    {{--<div class="ch-dropdown">--}}
+                    {{--<ul class="ch-dropdown__list">--}}
+                    {{--<li class="ch-dropdown__item">--}}
+                    {{--<a href="https://apidocs.uistacks.com/docs/" class="ch-dropdown__link">API Documentation</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="ch-dropdown__item">--}}
+                    {{--<a href="tutorials/index.html" class="ch-dropdown__link">API Integration Tutorials</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="ch-dropdown__item">--}}
+                    {{--<a href="http://status.uistacks.com/" class="ch-dropdown__link">API Status</a>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                    <!-- ======================================================================
                         Dropdown for developer section end
                         ======================================================================= -->
                         <!-- ======================================================================
@@ -194,13 +141,13 @@
                                         <a href="{{ action('BlogController@index') }}" class="ch-dropdown__link">Blog</a>
                                     </li>
                                     {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="resources/index.html" class="ch-dropdown__link">Resources</a>--}}
+                                    {{--<a href="resources/index.html" class="ch-dropdown__link">Resources</a>--}}
                                     {{--</li>--}}
                                     {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="integrations/index.html" class="ch-dropdown__link">Integrations</a>--}}
+                                    {{--<a href="integrations/index.html" class="ch-dropdown__link">Integrations</a>--}}
                                     {{--</li>--}}
                                     {{--<li class="ch-dropdown__item">--}}
-                                        {{--<a href="help/updates/index.html" class="ch-dropdown__link">What's New?</a>--}}
+                                    {{--<a href="help/updates/index.html" class="ch-dropdown__link">What's New?</a>--}}
                                     {{--</li>--}}
                                 </ul>
                             </div>

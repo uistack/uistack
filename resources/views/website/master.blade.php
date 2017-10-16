@@ -96,14 +96,14 @@ Logo asset download End
     });
 </script>
 <!--typekit async-->
-<script type="text/javascript" src="{{ asset('public/website_assets/js/typekit-dyq8zgf.js') }}"></script>
+{{--<script type="text/javascript" src="{{ asset('public/website_assets/js/typekit-dyq8zgf.js') }}"></script>--}}
 <!--begin Control Case ASV PCI code-->
-<script language='javascript'>
-    function CCPopUp(SEALURL, cId) {
-        window.open("" + SEALURL + "index.php?page=showCert&cId=" + cId + "", "win", 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=700,height=585');
-        self.name = "mainWin";
-    }
-</script>
+{{--<script language='javascript'>--}}
+    {{--function CCPopUp(SEALURL, cId) {--}}
+        {{--window.open("" + SEALURL + "index.php?page=showCert&cId=" + cId + "", "win", 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=700,height=585');--}}
+        {{--self.name = "mainWin";--}}
+    {{--}--}}
+{{--</script>--}}
 <!--end Control Case ASV PCI code-->
 </body>
 </html>
