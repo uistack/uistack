@@ -79,10 +79,10 @@ Logo asset download End
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="{{ asset('public/website_assets/js/mustache.js') }}"></script>
-<script src="{{ asset('public/website_assets/js/tp_snippets.js') }}"></script>
-<script>
-    TpJsSnippet.init("website");
-</script>
+{{--<script src="{{ asset('public/website_assets/js/tp_snippets.js') }}"></script>--}}
+{{--<script>--}}
+    {{--TpJsSnippet.init("website");--}}
+{{--</script>--}}
 <script src="{{ asset('public/website_assets/js/application.js') }}"></script>
 <!-- Hover trigger security popover -->
 <script type="text/javascript">
