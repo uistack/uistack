@@ -1,6 +1,6 @@
 <header class="header">
         <a href="{{url('/')}}/{{Lang::getlocale()}}/admin" class="logo" style="color: #fff; font-weight: 800; font-size: 20px;">
-            <img src="{{ asset('public/images/logo.png') }}" alt="Logo">
+            <img src="{{ asset('public/images/logo.png') }}" alt="Logo" height="36">
              {{ \UiStacks\Settings\Models\Setting::find(1)->value }}
         </a>
         <nav class="navbar navbar-static-top" role="navigation">

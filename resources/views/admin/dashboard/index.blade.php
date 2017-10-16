@@ -152,7 +152,7 @@
                                     <p style="padding-top: 7px;">{{ trans('admin.inno_thanks') }}</p>
                                 </div>
                                 <div class="pull-right" style="float: right !important;">
-                                    <img src="{{ asset('public/images/uistacks.png') }}" style="margin: 0 auto;">
+                                    <img src="{{ asset('public/images/logo.png') }}" style="margin: 0 auto;" height="45">
                                 </div>
                                 
                             </div>

@@ -26,7 +26,7 @@ return [
     'we_have_email_change' => 'We sent you an email Please check your inbox to activate your account',
     'dear_user_change_my_password' => 'Dear User Please click the link below to reset your password',
     'change_my_password' => 'Change my password',
-    'project_name' => 'SyBace',
+    'project_name' => 'UiStacks',
     'sowfware_category' => 'website',
     'specialty' => 'Specialty',
     'production_date' => '20-03-2017',

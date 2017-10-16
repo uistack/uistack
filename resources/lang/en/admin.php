@@ -24,7 +24,7 @@ return [
     'last_update' => 'Last Update',
     'last_update_var' => 'none',
     //Dashboard
-    'welcome_site' => 'Welcome in SyBace App Backend',
+    'welcome_site' => 'Welcome in UiStacks App Backend',
     'sites_total_visits' => 'Sites total visits',
     'sites_web_visits' => 'Sites web visits',
     'sites_android_visits' => 'Sites android visits',
@@ -34,7 +34,7 @@ return [
     'news_android_visits' => 'News android visits',
     'news_ios_visits' => 'News ios visits',
     'counter' => 'Counter',
-    'inno_thanks' => 'Thank you for using SyBace India',
+    'inno_thanks' => 'Thank you for using UiStacks',
     'back_to_site' => 'Back to site',
     //users
     'user' => 'User',
