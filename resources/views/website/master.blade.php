@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/header.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/footer.css') }}" />
     <meta name="msvalidate.01" content="2541484BA40CEA7D4C741B000D54FFA3" />
-    <script src="{{ asset('public/website_assets/js/vwo.js') }}"></script>
+    {{--<script src="{{ asset('public/website_assets/js/vwo.js') }}"></script>--}}
     @yield('header')
 </head>
 
