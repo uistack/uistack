@@ -59,98 +59,114 @@
                     </div>
                 </div>
             </div>
-
             <!--hide this block after search result-->
             <div id="general-topics">
                 <div class="support-links-list">
-                    <div class="support-link">
-                        <a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/php.png" alt="PHP" width="48"></p>PHP Tutorials</a>
-                    </div>
-                     <div class="support-link">
-                        <a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/node.png" alt="Node JS" width="48"></p>NodeJS Tutorials</a>
-                    </div>
-                     <div class="support-link">
-                        <a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/ruby.png" alt="Ruby" width="48"></p>Ruby on Rails Tutorials</a>
-                    </div>
-                     <div class="support-link">
-                        <a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/angularjs.png" alt="AngularJS" width="48"></p>AngularJS Tutorials</a>
-                    </div>
-                    <div class="support-link">
-                        <a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/mongodb.png" alt="MongoDB" width="48"></p>MongoDB Tutorials</a>
-                    </div>
+                    @php
+                        $arrCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->take(4)->get();
+                    @endphp
+                    @if(isset($arrCourses))
+                        @foreach($arrCourses as $course)
+                            <div class="support-link">
+                                <a href="{{ action('LearnController@index',$course->slug) }}">
+                                    <p>
+                                        @if(isset($course->media) && isset($course->media->main_image) && isset($course->media->main_image->styles['thumbnail']))
+                                            <img src="{{url('/')}}/{{ $course->media->main_image->styles['thumbnail'] }}" alt="" width="40" >
+                                        @else
+                                            <img src="{{ asset('/public/website_assets/img/no-img.png') }}" alt="" width="40">
+                                        @endif
+                                    </p><i class="tuts-name">{{ $course->trans->name }}</i></a>
+                            </div>
+                        @endforeach
+                    @endif
                     {{--<div class="support-link">--}}
-                        {{--<a href="../docs/index.html" target="_blank"><span class="fa fa-file-text-o"></span>Help documentation</a>--}}
-                    {{--</div><!----}}
-                     {{----><div class="support-link">--}}
-                        {{--<a href="https://apidocs.uistacks.com/" target="_blank"><span class="fa fa-file-code-o"></span>API reference</a>--}}
-                    {{--</div><!----}}
-                     {{----><div class="support-link">--}}
-                        {{--<a href="../tutorials/index.html" target="_blank"><span class="fa fa-users"></span>API integration tutorials</a>--}}
-                    {{--</div><!----}}
-                     {{----><div class="support-link">--}}
-                        {{--<a href="updates/index.html" target="_blank"><span class="fa fa-rotate-left"></span>What's New?</a>--}}
+                    {{--<a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/php.png" alt="PHP" width="48"></p>PHP Tutorials</a>--}}
                     {{--</div>--}}
                     {{--<div class="support-link">--}}
-                        {{--<a href="https://support.uistacks.com/support/solutions" target="_blank"><span class="fa fa-book"></span>Knowledge Base</a>--}}
+                    {{--<a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/node.png" alt="Node JS" width="48"></p>NodeJS Tutorials</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="support-link">--}}
+                    {{--<a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/ruby.png" alt="Ruby" width="48"></p>Ruby on Rails Tutorials</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="support-link">--}}
+                    {{--<a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/angularjs.png" alt="AngularJS" width="48"></p>AngularJS Tutorials</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="support-link">--}}
+                    {{--<a href="javascript:void(0);" target="_blank"><p><img src="{{ url("/") }}/public/website_assets/img/servicers/mongodb.png" alt="MongoDB" width="48"></p>MongoDB Tutorials</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="support-link">--}}
+                    {{--<a href="../docs/index.html" target="_blank"><span class="fa fa-file-text-o"></span>Help documentation</a>--}}
+                    {{--</div><!----}}
+                    {{----><div class="support-link">--}}
+                    {{--<a href="https://apidocs.uistacks.com/" target="_blank"><span class="fa fa-file-code-o"></span>API reference</a>--}}
+                    {{--</div><!----}}
+                    {{----><div class="support-link">--}}
+                    {{--<a href="../tutorials/index.html" target="_blank"><span class="fa fa-users"></span>API integration tutorials</a>--}}
+                    {{--</div><!----}}
+                    {{----><div class="support-link">--}}
+                    {{--<a href="updates/index.html" target="_blank"><span class="fa fa-rotate-left"></span>What's New?</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="support-link">--}}
+                    {{--<a href="https://support.uistacks.com/support/solutions" target="_blank"><span class="fa fa-book"></span>Knowledge Base</a>--}}
                     {{--</div>--}}
                 </div>
 
                 {{--<div class="text-center">--}}
-                    {{--<div class="block-title">--}}
-                        {{--LEARN WEB DEVELOPMENT--}}
-                    {{--</div>--}}
+                {{--<div class="block-title">--}}
+                {{--LEARN WEB DEVELOPMENT--}}
+                {{--</div>--}}
                 {{--</div>--}}
                 {{--<div class="row">--}}
-                    {{--<div class="col-sm-4">--}}
-                        {{--<div class="support-brick" style="border-color:#AF9BF7;">--}}
-                            {{--<div class="support-brick-header" style="background-image: linear-gradient(45deg, rgba(155, 131, 245, 0.8) 0%, rgba(104, 104, 227, 0.8) 100%);">--}}
-                                {{--<span class="fa fa-file-text"></span>--}}
-                                {{--The Basics--}}
-                            {{--</div>--}}
-                            {{--<div class="support-brick-body">--}}
-                                {{--<ul class="list-arrow">--}}
-                                    {{--<li><a target="_blank" href="../docs/cards.html#what-is-a-payment-gateway">Understanding merchant account and payment gateways</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/building-blocks-overview.html">An overview of Chargebee's building blocks</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/plans.html">Configuring plans, addons and more</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/hp_overview.html">Using hosted pages</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-sm-4">--}}
-                        {{--<div class="support-brick" style="border-color:#F18F93;">--}}
-                            {{--<div class="support-brick-header" style="background-image: linear-gradient(-134deg, rgba(245, 145, 90, 0.8) 33%, rgba(241, 131, 103, 0.8) 58%, rgba(236, 110, 125, 0.8) 100%);">--}}
-                                {{--<span class="fa fa-money"></span>--}}
-                                {{--Collecting Payments--}}
-                            {{--</div>--}}
-                            {{--<div class="support-brick-body">--}}
-                                {{--<ul class="list-arrow">--}}
-                                    {{--<li><a target="_blank" href="../docs/cards.html">Card Payments</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/paypal_express_checkout.html">PayPal Express Checkout</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/amazon_payments.html">Amazon Payments</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/direct-debit-payments.html">Direct Debit</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/offline_payments.html">Offline Payments (Cash and Checks)</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-sm-4">--}}
-                        {{--<div class="support-brick" style="border-color:#C78BE9;">--}}
-                            {{--<div class="support-brick-header" style="background-image: linear-gradient(-134deg, rgba(229, 119, 172, 0.8) 33%, rgba(180, 109, 234, 0.8) 100%);">--}}
-                                {{--<span class="fa fa-wrench"></span>--}}
-                                {{--Using our APIs--}}
-                            {{--</div>--}}
-                            {{--<div class="support-brick-body">--}}
-                                {{--<ul class="list-arrow">--}}
-                                    {{--<li><a target="_blank" href="https://apidocs.uistacks.com/docs/api">An overview of Chargebee's APIs</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/api_keys.html">API Keys</a></li>--}}
-                                    {{--<li><a target="_blank" href="../docs/webhook_settings.html">Webhooks</a></li>--}}
-                                    {{--<li><a target="_blank" href="https://github.com/uistacks/uistacks-samples">Code samples</a></li>--}}
-                                    {{--<li><a target="_blank" href="https://github.com/uistacks?utf8=%E2%9C%93&amp;query=uistacks">Chargebee's client libraries</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                {{--<div class="col-sm-4">--}}
+                {{--<div class="support-brick" style="border-color:#AF9BF7;">--}}
+                {{--<div class="support-brick-header" style="background-image: linear-gradient(45deg, rgba(155, 131, 245, 0.8) 0%, rgba(104, 104, 227, 0.8) 100%);">--}}
+                {{--<span class="fa fa-file-text"></span>--}}
+                {{--The Basics--}}
+                {{--</div>--}}
+                {{--<div class="support-brick-body">--}}
+                {{--<ul class="list-arrow">--}}
+                {{--<li><a target="_blank" href="../docs/cards.html#what-is-a-payment-gateway">Understanding merchant account and payment gateways</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/building-blocks-overview.html">An overview of Chargebee's building blocks</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/plans.html">Configuring plans, addons and more</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/hp_overview.html">Using hosted pages</a></li>--}}
+                {{--</ul>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-sm-4">--}}
+                {{--<div class="support-brick" style="border-color:#F18F93;">--}}
+                {{--<div class="support-brick-header" style="background-image: linear-gradient(-134deg, rgba(245, 145, 90, 0.8) 33%, rgba(241, 131, 103, 0.8) 58%, rgba(236, 110, 125, 0.8) 100%);">--}}
+                {{--<span class="fa fa-money"></span>--}}
+                {{--Collecting Payments--}}
+                {{--</div>--}}
+                {{--<div class="support-brick-body">--}}
+                {{--<ul class="list-arrow">--}}
+                {{--<li><a target="_blank" href="../docs/cards.html">Card Payments</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/paypal_express_checkout.html">PayPal Express Checkout</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/amazon_payments.html">Amazon Payments</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/direct-debit-payments.html">Direct Debit</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/offline_payments.html">Offline Payments (Cash and Checks)</a></li>--}}
+                {{--</ul>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-sm-4">--}}
+                {{--<div class="support-brick" style="border-color:#C78BE9;">--}}
+                {{--<div class="support-brick-header" style="background-image: linear-gradient(-134deg, rgba(229, 119, 172, 0.8) 33%, rgba(180, 109, 234, 0.8) 100%);">--}}
+                {{--<span class="fa fa-wrench"></span>--}}
+                {{--Using our APIs--}}
+                {{--</div>--}}
+                {{--<div class="support-brick-body">--}}
+                {{--<ul class="list-arrow">--}}
+                {{--<li><a target="_blank" href="https://apidocs.uistacks.com/docs/api">An overview of Chargebee's APIs</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/api_keys.html">API Keys</a></li>--}}
+                {{--<li><a target="_blank" href="../docs/webhook_settings.html">Webhooks</a></li>--}}
+                {{--<li><a target="_blank" href="https://github.com/uistacks/uistacks-samples">Code samples</a></li>--}}
+                {{--<li><a target="_blank" href="https://github.com/uistacks?utf8=%E2%9C%93&amp;query=uistacks">Chargebee's client libraries</a></li>--}}
+                {{--</ul>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
                 {{--</div>--}}
 
             </div>

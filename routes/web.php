@@ -117,6 +117,19 @@ Route::group(['prefix' => $locale], function() {
 });
 // Market Place routes end here
 
+// Tutorial routes start here
+//Route::get('learn', 'LearnController@index');
+// Tutorial routes end here
+
 Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@detail');
 Route::post('post-comment/{slug}', 'BlogController@comment');
+
+// Catch all page controller (place at the very bottom)
+Route::get('{slug}/{slug2?}', [
+    'uses' => 'LearnController@index'
+])->where('slug', '([A-Za-z0-9\-\/]+)');
+
+//Route::get('{slug}/{query}', [
+//    'uses' => 'LearnController@show'
+//])->where('query', '([A-Za-z0-9\-\/]+)');

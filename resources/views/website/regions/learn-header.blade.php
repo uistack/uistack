@@ -10,9 +10,9 @@
                 </button>
                 <a href="{{ url("/") }}" class="hidden-md hidden-lg">
                     <div class="navbar-brand">
-                        <img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" alt="ChargeBee API Documentation" class="img-responsive" width="28">
+                        <img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" alt="UiStacks" class="img-responsive" width="28">
                     </div>
-                    <div class="navbar-brand-title">API</div>
+                    <div class="navbar-brand-title">UiStacks</div>
                 </a>
                 <button type="button" class="navbar-toggle" id="cb-override" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -83,39 +83,41 @@
                 </div>
             </div>
         </div>
-        <div class="cb-scrollmenu-container hidden-sm hidden-xs" id="cb-scroll-menu">
-            <div class="cb-scrollmenu__title">Orders</div>
-            <div class="cb-scrollmenu__nav">
-                <div class="cb-scrollmenu__current">Introduction</div>
-                <ul class="nav" id="cb-nav-group">
-                    <li>
-                        <a href="#order_attributes" class="list-group-item">
-                            Order attributes
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#retrieve_an_order" class="list-group-item">
-                            Retrieve an order
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#create_an_order" class="list-group-item">
-                            Create an order
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#list_orders" class="list-group-item">
-                            List orders
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#update_an_order" class="list-group-item">
-                            Update an order
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+        {{--<div class="cb-scrollmenu-container hidden-sm hidden-xs" id="cb-scroll-menu">--}}
+            {{--<div class="cb-scrollmenu__title">Orders</div>--}}
+            {{--<div class="cb-scrollmenu__nav">--}}
+                {{--<div class="cb-scrollmenu__current">Introduction</div>--}}
+                {{--<ul class="nav" id="cb-nav-group">--}}
+                    {{--<li>--}}
+                        {{--<a href="#order_attributes" class="list-group-item">--}}
+                            {{--Order attributes--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#retrieve_an_order" class="list-group-item">--}}
+                            {{--Retrieve an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#create_an_order" class="list-group-item">--}}
+                            {{--Create an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#list_orders" class="list-group-item">--}}
+                            {{--List orders--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#update_an_order" class="list-group-item">--}}
+                            {{--Update an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
     </div>
 </div>
-<div class="cb-notify hidden-md hidden-lg cb-notify--light"><b>You are viewing the documentation for Chargebee API V2</b>. If you're using the older version (V1), click <a href="https://apidocs.chargebee.com/docs/api/v1">here</a>.</div>
+{{--<div class="cb-notify hidden-md hidden-lg cb-notify--light"><b>You are viewing the documentation for Chargebee API V2</b>. If you're using the older version (V1), click <a href="https://apidocs.chargebee.com/docs/api/v1">here</a>.</div>--}}

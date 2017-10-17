@@ -51,7 +51,7 @@
                                                                     @if(isset($course->media) && isset($course->media->main_image) && isset($course->media->main_image->styles['thumbnail']))
                                                                         <img src="{{url('/')}}/{{ $course->media->main_image->styles['thumbnail'] }}" alt="" width="34" >
                                                                     @else
-                                                                        <img src="{{ asset('images/select_main_img.png') }}" alt="" width="34">
+                                                                        <img src="{{ asset('/public/website_assets/img/no-img.png') }}" alt="" width="34">
                                                                     @endif
                                                                 </div>
                                                                 <div class="ch-dropdown__title">{{ $course->trans->name }}</div>
