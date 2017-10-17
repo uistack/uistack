@@ -1462,3 +1462,7 @@ footer{border-top:1px solid rgba(0,0,0,0.12);margin-top:60px;}
 @media(min-width:992px){.cb-testimonial-t--st{margin-top:50px;}
 .cb-testimonial-t--md{margin-top:80px;}
 }
+
+.tuts-name{
+font-size: 14px;
+}
