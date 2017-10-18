@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{ \UiStacks\Settings\Models\Setting::find(1)->value }} - Web Design & Developer Console</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,6 +27,7 @@
     {{--<meta name="twitter:creator" content="@uistacks">--}}
     {{--<meta name="twitter:image:src" content="static/resources/og-image.png">--}}
     <meta name="twitter:domain" content="https://www.uistacks.com/">
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/burger-menu.css') }}" />
@@ -35,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/header.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/footer.css') }}" />
     <meta name="msvalidate.01" content="2541484BA40CEA7D4C741B000D54FFA3" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     {{--<script src="{{ asset('public/website_assets/js/vwo.js') }}"></script>--}}
     @yield('header')
 </head>
@@ -75,8 +77,6 @@ Logo asset download start
 <!-- =====================================================================================
 Logo asset download End
 ====================================================================================== -->
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="{{ asset('public/website_assets/js/mustache.js') }}"></script>
 {{--<script src="{{ asset('public/website_assets/js/tp_snippets.js') }}"></script>--}}

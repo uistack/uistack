@@ -194,10 +194,10 @@
                        Dropdown for resource section start
                        ======================================================================= -->
                         <li class="ch-nav__item">
-                            <a href="https://app.uistacks.com/login">Sign in</a>
+                            <a href="{{ action('WebsiteController@login') }}">Sign in</a>
                         </li>
                         <li class="ch-nav__item">
-                            <a href="trial-signup.html" class="ch-nav__btn">Sign Up</a>
+                            <a href="{{ action('WebsiteController@register') }}" class="ch-nav__btn">Sign Up</a>
                         </li>
                     </ul>
                 </nav>

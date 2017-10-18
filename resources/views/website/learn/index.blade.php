@@ -66,5 +66,4 @@
     <script src="{{ asset('public/website_assets/js/tp_apidocs.js') }}"></script>
     <script src="{{ asset('public/website_assets/js/tp_swiftype.js') }}"></script>
     <script src="{{ asset('public/website_assets/js/learn.js') }}"></script>
-
 @stop

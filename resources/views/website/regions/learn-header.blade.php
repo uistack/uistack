@@ -73,10 +73,10 @@
                     <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
 
                         <li>
-                            <a href="https://app.chargebee.com/login">Sign in</a>
+                            <a href="{{ action('WebsiteController@login') }}">Sign in</a>
                         </li>
                         <li>
-                            <a href="https://www.chargebee.com/trial-signup.html" class="btn-flat">Sign up</a>
+                            <a href="{{ action('WebsiteController@register') }}" class="btn-flat">Sign up</a>
                         </li>
 
                     </ul>
