@@ -464,7 +464,7 @@ class WebsiteController extends Controller {
 
     public function logout() {
         Auth::logout();
-        \Session::flash('alert-class', 'alert-danger');
+        \Session::flash('alert-class', 'alert-success');
         \Session::flash('message', trans('project.logout_successfully'));
         return redirect('/');
     }

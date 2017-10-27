@@ -163,7 +163,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+// ...
+        Collective\Html\HtmlServiceProvider::class,
+        // ...
         /*
          * Package Service Providers...
          */
@@ -184,6 +186,7 @@ return [
         UiStacks\Articles\ArticlesServiceProvider::class,
         UiStacks\Blogs\BlogsServiceProvider::class,
         UiStacks\Tutorials\TutorialsServiceProvider::class,
+        UiStacks\Uiquiz\QuizServiceProvider::class,
         UiStacks\Tasks\TasksServiceProvider::class,
 
         /*
@@ -251,6 +254,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // ...
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        // ...
         'Image' => 'Intervention\Image\Facades\Image',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         // seo Facades

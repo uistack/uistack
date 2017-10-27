@@ -246,7 +246,7 @@
                 <div class="ch-mnav__header">
                     <div class="ch-mnav__close" data-ch-mnav ="true" id="ch-js-close"></div>
                     <div class="ch-mnav__action">
-                        <a href="https://app.uistacks.com/login" class="ch-mnav__link">Sign in →</a>
+                        <a href="{{ action('WebsiteController@login') }}" class="ch-mnav__link">Sign in →</a>
                     </div>
                 </div>
                 <!-- =================================
@@ -255,7 +255,7 @@
                 <div class="ch-mnav__content">
                     <div class="ch-mnav__actions">
                         <div class="ch-mnav__action">
-                            <a href="schedule-a-demo/index.html" class="ch-mnav__btn">Schedule a demo →</a>
+                            <a href="{{ action('WebsiteController@register') }}" class="ch-mnav__btn">Getting Started →</a>
                         </div>
                         <div class="ch-mnav__action text-center">
                             <a href="tel:919403743126" class="ch-mnav__btn">
@@ -271,19 +271,39 @@
                         Mobile list start
                         ================================== -->
                         <div class="ch-mnav__blk">
-                            <h4 class="ch-mnav__title">Product</h4>
+                            <h4 class="ch-mnav__title">Tutorials</h4>
+                            <ul class="ch-mnav__list">
+                                @if(isset($arrCourses))
+                                    @foreach($arrCourses as $course)
+                                        <li class="ch-mnav__item">
+                                            <a href="{{ action('LearnController@index',$course->slug) }}">{{ $course->trans->name }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                                {{--<li class="ch-mnav__item">--}}
+                                {{--<a href="subscription-management/index.html">Subscription Management</a>--}}
+                                {{--</li>--}}
+                                {{--<li class="ch-mnav__item">--}}
+                                {{--<a href="recurring-billing-invoicing/index.html">Billing and Invoicing</a>--}}
+                                {{--</li>--}}
+                                {{--<li class="ch-mnav__item">--}}
+                                {{--<a href="recurring-payments/index.html">Payments and Accounting</a>--}}
+                                {{--</li>--}}
+                                {{--<li class="ch-mnav__item">--}}
+                                {{--<a href="saas-reporting/index.html">Reporting and Analytics</a>--}}
+                                {{--</li>--}}
+                            </ul>
+                        </div>
+                        <!-- =================================
+                        Mobile list end
+                        ================================== -->
+                        <!-- =================================
+                        Mobile list start
+                        ================================== -->
+                        <div class="ch-mnav__blk">
                             <ul class="ch-mnav__list">
                                 <li class="ch-mnav__item">
-                                    <a href="subscription-management/index.html">Subscription Management</a>
-                                </li>
-                                <li class="ch-mnav__item">
-                                    <a href="recurring-billing-invoicing/index.html">Billing and Invoicing</a>
-                                </li>
-                                <li class="ch-mnav__item">
-                                    <a href="recurring-payments/index.html">Payments and Accounting</a>
-                                </li>
-                                <li class="ch-mnav__item">
-                                    <a href="saas-reporting/index.html">Reporting and Analytics</a>
+                                    <a href="enterprise-subscription-billing/index.html">Quiz</a>
                                 </li>
                             </ul>
                         </div>
@@ -296,7 +316,7 @@
                         <div class="ch-mnav__blk">
                             <ul class="ch-mnav__list">
                                 <li class="ch-mnav__item">
-                                    <a href="enterprise-subscription-billing/index.html">Enterprise</a>
+                                    <a href="customers/index.html">Q&A Forum</a>
                                 </li>
                             </ul>
                         </div>
@@ -309,7 +329,7 @@
                         <div class="ch-mnav__blk">
                             <ul class="ch-mnav__list">
                                 <li class="ch-mnav__item">
-                                    <a href="customers/index.html">Customers</a>
+                                    <a href="{{ action("WebsiteController@createContact")}}">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -322,7 +342,7 @@
                         <div class="ch-mnav__blk">
                             <ul class="ch-mnav__list">
                                 <li class="ch-mnav__item">
-                                    <a href="pricing/index.html">Pricing</a>
+                                    <a href="{{ action('CmsController@showPage','about-us') }}" >About Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -333,36 +353,16 @@
                         Mobile list start
                         ================================== -->
                         <div class="ch-mnav__blk">
-                            <h4 class="ch-mnav__title">Developers</h4>
                             <ul class="ch-mnav__list">
                                 <li class="ch-mnav__item">
-                                    <a href="https://apidocs.uistacks.com/docs/api">API Reference</a>
+                                    <a href="{{ action('CmsController@showPage','privacy') }}" >Privacy Policy</a>
                                 </li>
-                                <li class="ch-mnav__item">
-                                    <a href="tutorials/index.html">API Integration Tutorials</a>
-                                </li>
-                                <li class="ch-mnav__item">
-                                    <a href="http://status.uistacks.com/">API Status</a>
-                                </li>
+                            </ul>
+                        </div>
+                        <!-- =================================
+                        Mobile list end
+                        ================================== -->
 
-                            </ul>
-                        </div>
-                        <!-- =================================
-                        Mobile list end
-                        ================================== -->
-                        <!-- =================================
-                        Mobile list start
-                        ================================== -->
-                        <div class="ch-mnav__blk">
-                            <ul class="ch-mnav__list">
-                                <li class="ch-mnav__item">
-                                    <a href="payment-gateways/index.html">Payment Gateways</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- =================================
-                        Mobile list end
-                        ================================== -->
                         <!-- =================================
                        Mobile list start
                        ================================== -->

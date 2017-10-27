@@ -11,7 +11,8 @@
         "unisharp/laravel-ckeditor": "^4.6",
         "laravel/socialite": "^2.0",
         "skovmand/mailchimp-laravel": "^1.0",
-        "artesaos/seotools": "^0.10.0"
+        "artesaos/seotools": "^0.10.0",
+        "laravelcollective/html": "^5.3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -43,6 +44,7 @@
             "UiStacks\\Articles\\": "packages/uistacks/articles/src",
             "UiStacks\\Blogs\\": "packages/uistacks/blogs/src",
             "UiStacks\\Tutorials\\": "packages/uistacks/tutorials/src",
+            "UiStacks\\Uiquiz\\": "packages/uistacks/uiquiz/src",
             "UiStacks\\Tasks\\": "packages/uistacks/tasks/src"
         },
         "files": [

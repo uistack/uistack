@@ -120,48 +120,7 @@ class CreateTutorialsTable extends Migration
             $table->string('lang');
             $table->timestamps();
         });
-        Schema::create('quizes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('section_id')->unsigned()->default(0);
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->integer('created_by')->unsigned()->index()->nullable();
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('updated_by')->unsigned()->index()->nullable();
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('active')->default(0);
-            $table->timestamps();
-        });
 
-        Schema::create('quizes_trans', function(Blueprint $table)
-        {
-            $table->increments('id');
-            $table->integer('quize_id')->unsigned()->index()->nullable();
-            $table->foreign('quize_id')->references('id')->on('quizes')->onDelete('cascade');
-            $table->text('question')->nullable();
-            $table->string('lang');
-            $table->timestamps();
-        });
-        Schema::create('answers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('quize_id')->unsigned()->default(0);
-            $table->foreign('quize_id')->references('id')->on('quizes')->onDelete('cascade');
-            $table->integer('created_by')->unsigned()->index()->nullable();
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('updated_by')->unsigned()->index()->nullable();
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('active')->default(0);
-            $table->timestamps();
-        });
-
-        Schema::create('answers_trans', function(Blueprint $table)
-        {
-            $table->increments('id');
-            $table->integer('answer_id')->unsigned()->index()->nullable();
-            $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
-            $table->longText('answer')->nullable();
-            $table->string('lang');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -171,10 +130,6 @@ class CreateTutorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers_trans');
-        Schema::dropIfExists('answers');
-        Schema::dropIfExists('quizes_trans');
-        Schema::dropIfExists('quizes');
         Schema::dropIfExists('videos_trans');
         Schema::dropIfExists('videos');
         Schema::dropIfExists('contents_trans');

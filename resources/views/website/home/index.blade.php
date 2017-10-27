@@ -242,7 +242,7 @@
                 <div class="col-sm-6">
                     <div class="media tpmain-media">
                         <div class="media-left tpmain-media__figure">
-                            <img src="{{ url("/") }}/public/website_assets/img/infrastructure-support.svg" alt="">
+                            <img src="{{ url("/") }}/public/website_assets/img/support.svg" alt="">
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading tpmain-media__heading">Infrastructure Support</h4>

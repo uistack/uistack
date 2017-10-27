@@ -33,7 +33,7 @@ return [
     'registerd_successfuly_and_sms_sent' => 'Your account is not activated, the activation message has been sent to your mobile',
     'activation_code_msg' => 'Account activation code:',
     'account_confirmed_successfully' => 'Your account has been successfully activated',
-    'logout_successfully' => 'Logout successfully completed',
+    'logout_successfully' => 'You have been successfully logged out!',
     'login_successfully' => 'welcome again',
     'invalid_login_data' => 'The login data is incorrect',
     'reset_password' => 'change Password',

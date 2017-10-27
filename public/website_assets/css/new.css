@@ -12,7 +12,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700;}
 h1,.h1{font-size:26px;line-height:30px;}
 h2,.h2{font-size:22px;line-height:26px;}
 .text-black{color:#212128;}
-.form-control{height:60px;padding:18px;height:50px;padding:20px 16px;color:#000;font-family:var(--ff-secondary);}
+.form-control{height:60px;padding:18px;/*height:50px;*/padding:20px 16px;color:#000;font-family:var(--ff-secondary);}
 .btn{font-weight:700;border-radius:3px;-webkit-border-radius:3px;font-size:16px;line-height:22px;height:60px;padding:18px 34px;position:relative;overflow:hidden;-webkit-transition-property:border-color, background;-o-transition-property:border-color, background;transition-property:border-color, background;-webkit-transition-duration:0.3s, 0.3s;-o-transition-duration:0.3s, 0.3s;transition-duration:0.3s, 0.3s;}
 .btn-success.btn-suffix{font-family:var(--ff-secondary);font-weight:500;text-transform:capitalize;font-size:16px;line-height:18px;height:40px;padding:9px 30px;}
 .btn-xs{font-size:12px;line-height:15px;padding:6px 20px;height:30px;}

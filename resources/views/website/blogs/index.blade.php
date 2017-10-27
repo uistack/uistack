@@ -3,25 +3,24 @@
     <style type="text/css">
         .blog-items{
             padding-left: 2px !important;
+            display: inline-block;
+        }
+        .blog-items {
+            /*border:1px;*/
+            border-bottom:1px dotted #ccc;
+            padding: 10px;
+            /*color:#fff;*/
         }
     </style>
     <div class="sb-site-container">
-        @include('website.home.blocks.top-head')
+        {{--@include('website.home.blocks.top-head')--}}
         @include('website.regions.header')
         <div class="container">
-            <div class="text-center">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Deals Page -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-4141596849655811"
-                     data-ad-slot="8098943268"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            &nbsp;
         </div>
+        <br/>
+        <br/>
+        <br/>
         <div class="container">
             <h1 class="right-line">Blog</h1>
             <div class="alert alert-light alert-info">
@@ -46,11 +45,8 @@
                                                 <i class="zmdi zmdi-time mr-05 color-info"></i>
                                                 <span class="color-medium-dark">{{ date("l jS \of F Y h:i:s A",strtotime($item->trans->created_at)) }}</span>
                                             </span>
-                                            <span class="ml-1"><i class="zmdi zmdi-comments color-royal mr-05"></i> 25</span>
-                                            <a href="{{ action('BlogController@detail',$item->slug) }}" class="btn btn-primary btn-sm animate-icon pull-right">Read more
-                                                <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i>
-                                                <div class="ripple-container"></div>
-                                            </a>
+                                            <span class="ml-1"><i class="fa fa-comment"></i> 25</span>
+                                            <a href="{{ action('BlogController@detail',$item->slug) }}" class="btn btn-primary btn-sm animate-icon pull-right">Read more →</a>
                                         </div>
                                     </div>
                                 </div>
@@ -58,10 +54,10 @@
                         @endforeach
                     @endif
                 </div>
-                <div class="col-md-3">
-                    <div data-WRID="WRID-150503454621794760" data-widgetType="searchWidget" data-class="affiliateAdsByFlipkart" height="250" width="300" ></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
-                </div>
-                <!--<div class="col-md-3">
+            {{--<div class="col-md-3">--}}
+            {{--<div data-WRID="WRID-150503454621794760" data-widgetType="searchWidget" data-class="affiliateAdsByFlipkart" height="250" width="300" ></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>--}}
+            {{--</div>--}}
+            <!--<div class="col-md-3">
                     <div class="card card-success">
                         <div class="card-header">
                             <i class="fa fa-list-alt" aria-hidden="true"></i> Summary</div>
@@ -89,11 +85,10 @@
                 </div>-->
             </div>
         </div>
+        <br/>
         <!-- container -->
         @include('website.regions.footer')
     </div>
-    <!-- sb-site-container -->
-    @include('website.regions.leftbar')
 @endsection
 @section('footer')
 

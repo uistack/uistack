@@ -76,22 +76,14 @@
 		}
 	</style>
 	<div class="sb-site-container">
-		@include('website.home.blocks.top-head')
+		{{--@include('website.home.blocks.top-head')--}}
 		@include('website.regions.header')
 		<div class="container">
-			<div class="text-center">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Deals Page -->
-				<ins class="adsbygoogle"
-					 style="display:block"
-					 data-ad-client="ca-pub-4141596849655811"
-					 data-ad-slot="8098943268"
-					 data-ad-format="auto"></ins>
-				<script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
+			&nbsp;
 		</div>
+		<br/>
+		<br/>
+		<br/>
 		<div class="container">
 			<h1 class="right-line">Blog</h1>
 			<div class="alert alert-light alert-info">
@@ -181,6 +173,7 @@
 						</div>
 						<div class="post-block post-leave-comment">
 							<h3>Leave a comment</h3>
+							@include('website.blocks.page-message')
 							<form id="frm_comment" method="post" action="{{ action('BlogController@comment',$item->slug) }}">
 								@if(Auth::guest())
 									<div class="row">
@@ -212,10 +205,11 @@
 								</div>
 								<input id="post_id" name="post_id" class="form-control" value="{{ $item->id }}" type="hidden">
 								<div class="row">
-									<div class="col-md-12">
+									&nbsp;
+									<div class="col-md-12 pull-right">
 										<!-- <input data-loading-text="Loading..." class="btn btn-main-color" value="Post Comment" type="submit"> -->
-										<button class="btn btn-warning btn-raised pull-right" type="submit"><i class="fa fa-send"></i> Send<div class="ripple-container"></div></button>
-										<button type="button" class="btn btn-danger  pull-right">Cancel</button>
+										<button class="btn btn-warning btn-sm" type="submit"><i class="fa fa-send"></i> Send<div class="ripple-container"></div></button>
+										<button type="button" class="btn btn-danger btn-sm">Cancel</button>
 									</div>
 								</div>
 							</form>
@@ -223,9 +217,6 @@
 				</div>
 
 				@endif
-			</div>
-			<div class="col-md-3">
-				<div data-WRID="WRID-150503454621794760" data-widgetType="searchWidget" data-class="affiliateAdsByFlipkart" height="250" width="300" ></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
 			</div>
 			<!--<div class="col-md-3">
                 <div class="card card-success">
@@ -255,11 +246,12 @@
             </div>-->
 		</div>
 	</div>
+	&nbsp;
 	<!-- container -->
 	@include('website.regions.footer')
 	</div>
 	<!-- sb-site-container -->
-	@include('website.regions.leftbar')
+	{{--@include('website.regions.leftbar')--}}
 @endsection
 @section('footer')
 	<div class="modal modal-royal" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
