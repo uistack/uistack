@@ -8,7 +8,6 @@
     <div id="cb-wrapper-api-docs" class="">
         @include('website.regions.learn-header')
         <div id="cb-container" class="container">
-
             @include('website.learn.blocks.left-menu')
             <div id="cb-content" class="cb-content">
                 <p>Answer these questions. There's no time limit. </p>
@@ -40,87 +39,39 @@
                     <input type="hidden" name="starttime" value="4/10/2016 6:02:08 AM">
                     <input type="hidden" name="answers" value="0000000000000000000000000" size="25">
                     <input type="hidden" name="qnumber" value="1" size="25">
+                    @if(isset($items))
+                        @php
+                        $i = 0;
+                        @endphp
+                        @foreach($items as $item)
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    #{{ $i+1 }}. {{ $item->trans->question_text }}
+                                </div>
+                                <div class = "panel-body">
+                                    <div class="radio">
+                                        <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
+                                    </div>
+                                    {{--<button type="submit" class="btn btn-sm btn-warning pull-right" name="btn_next" id="btn_next" >Next →</button>--}}
+                                </div>
+                            </div>
+                        @php
+                        $i++;
+                        @endphp
+                        @endforeach
+                    @endif
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #1. What does ASP stand for?
-                        </div>
-                        <div class = "panel-body">
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
-                            </div>
-                            {{--<button type="submit" class="btn btn-sm btn-warning pull-right" name="btn_next" id="btn_next" >Next →</button>--}}
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #1. What does ASP stand for?
-                        </div>
-                        <div class = "panel-body">
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #1. What does ASP stand for?
-                        </div>
-                        <div class = "panel-body">
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #1. What does ASP stand for?
-                        </div>
-                        <div class = "panel-body">
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group">
-                    <button type="submit" class="btn btn-sm btn-warning" name="btn_next" id="btn_next" >Next →</button>
+                        <button type="submit" class="btn btn-sm btn-warning" name="btn_next" id="btn_next" >Next →</button>
                     </div>
                 </form>
 

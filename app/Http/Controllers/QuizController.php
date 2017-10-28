@@ -18,8 +18,8 @@ class QuizController extends Controller
     {
         //get all active questions from table
         $topic = Topic::where('slug',$slug)->first();
-        $items = Question::where('topic_id',$topic)->get();
-        dd($items);
+        $items = Question::where('topic_id',$topic->id)->get();
+//        dd($items);
         return view('website.quiz.index', compact('items'));
 
     }

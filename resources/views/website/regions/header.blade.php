@@ -131,8 +131,8 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                        @endforeach
-                                    @endif
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +140,13 @@
                         <!-- ======================================================================
                         Dropdown for Product section end
                         ======================================================================= -->
-                        {{--<li class="ch-nav__item">--}}
-                            {{--<a href="{{ action('QuizController@index') }}" hreflang="en">Quiz</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="ch-nav__item">--}}
-                            {{--<a href="pricing/index.html">Q&A Forum</a>--}}
-                        {{--</li>--}}
-                        <!-- ======================================================================
+                    {{--<li class="ch-nav__item">--}}
+                    {{--<a href="{{ action('QuizController@index') }}" hreflang="en">Quiz</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="ch-nav__item">--}}
+                    {{--<a href="pricing/index.html">Q&A Forum</a>--}}
+                    {{--</li>--}}
+                    <!-- ======================================================================
                         Dropdown for developer section start
                         ======================================================================= -->
                     {{--<li class="ch-nav__item" data-ch-dd="true">--}}
@@ -351,14 +351,14 @@
                         <!-- =================================
                         Mobile list start
                         ================================== -->
-                        {{--<div class="ch-mnav__blk">--}}
-                            {{--<ul class="ch-mnav__list">--}}
-                                {{--<li class="ch-mnav__item">--}}
-                                    {{--<a href="customers/index.html">Q&A Forum</a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
-                        <!-- =================================
+                    {{--<div class="ch-mnav__blk">--}}
+                    {{--<ul class="ch-mnav__list">--}}
+                    {{--<li class="ch-mnav__item">--}}
+                    {{--<a href="customers/index.html">Q&A Forum</a>--}}
+                    {{--</li>--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
+                    <!-- =================================
                         Mobile list end
                         ================================== -->
                         <!-- =================================
