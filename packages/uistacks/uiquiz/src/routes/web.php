@@ -35,12 +35,13 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => $locale . '/admin'],
     Route::PATCH('questions-options/{id}', 'UiStacks\Uiquiz\Controllers\QuestionsOptionsController@update');
     Route::POST('questions-options/bulk-operations', 'UiStacks\Uiquiz\Controllers\QuestionsOptionsController@bulkOperations');
     //Uiquiz
-    Route::GET('tutorials', 'UiStacks\Uiquiz\Controllers\UiquizController@index');
-    Route::GET('tutorials/create', 'UiStacks\Uiquiz\Controllers\UiquizController@create');
-    Route::POST('tutorials', 'UiStacks\Uiquiz\Controllers\UiquizController@store');
-    Route::GET('tutorials/{id}/edit', 'UiStacks\Uiquiz\Controllers\UiquizController@edit');
-    Route::PATCH('tutorials/{id}', 'UiStacks\Uiquiz\Controllers\UiquizController@update');
-    Route::POST('tutorials/bulk-operations', 'UiStacks\Uiquiz\Controllers\UiquizController@bulkOperations');
+    
+    Route::GET('quizzes', 'UiStacks\Uiquiz\Controllers\UiquizController@index');
+    Route::GET('quizzes/create', 'UiStacks\Uiquiz\Controllers\UiquizController@create');
+    Route::POST('quizzes', 'UiStacks\Uiquiz\Controllers\UiquizController@store');
+    Route::GET('quizzes/{id}/edit', 'UiStacks\Uiquiz\Controllers\UiquizController@edit');
+    Route::PATCH('quizzes/{id}', 'UiStacks\Uiquiz\Controllers\UiquizController@update');
+    Route::POST('quizzes/bulk-operations', 'UiStacks\Uiquiz\Controllers\UiquizController@bulkOperations');
 
     //get all topics section
     Route::get('topic-section/{id}', 'UiStacks\Uiquiz\Controllers\UiquizController@topicSection');

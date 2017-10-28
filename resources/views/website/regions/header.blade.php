@@ -92,15 +92,60 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="ch-nav__item" data-ch-dd="true" data-ch-product="true" id="ch-js-product" style="position: static;">
+                            <div class="ch-nav__dropdown">Quiz</div>
+                            <div class="ch-dropdown ch-dropdown--fluid">
+                                <div class="ch-dropdown__container">
+                                    <div class="ch-dropdown__list">
+                                        <!-- =========================================
+                                        Tutorial Management start
+                                        ========================================== -->
+                                        @php
+                                            $arrTopics = \UiStacks\Uiquiz\Models\Topic::where('active', 1)->take(4)->get();
+                                        //dd($arrTopics);
+                                        @endphp
+                                        {{--{{ dd($arrCourses) }}--}}
+                                        @if(isset($arrTopics))
+                                            @foreach($arrTopics as $topic)
+                                                <div class="ch-dropdown__item">
+                                                    <a href="{{ action('QuizController@index',$topic->slug) }}" class="ch-dropdown__link">
+                                                        <!-- animation part start-->
+                                                        <div class="ch-dropdown__bg"></div>
+                                                        <div class="ch-dropdown__arrow"></div>
+                                                        <!-- animation part end-->
+                                                        <div class="ch-dropdown__content">
+                                                            <div class="ch-dropdown__header">
+                                                                <div class="ch-dropdown__figure">
+                                                                    {{--<img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/header/cb-subscription.svg" alt="" width="34">--}}
+                                                                    @if(isset($topic->media) && isset($topic->media->main_image) && isset($topic->media->main_image->styles['thumbnail']))
+                                                                        <img src="{{url('/')}}/{{ $topic->media->main_image->styles['thumbnail'] }}" alt="" width="34" >
+                                                                    @else
+                                                                        <img src="{{ asset('/public/website_assets/img/no-img.png') }}" alt="" width="34">
+                                                                    @endif
+                                                                </div>
+                                                                <div class="ch-dropdown__title">{{ $topic->trans->title }}</div>
+                                                            </div>
+                                                            <div class="ch-dropdown__desc">
+                                                                {!! $topic->trans->description !!}
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                        @endforeach
+                                    @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <!-- ======================================================================
                         Dropdown for Product section end
                         ======================================================================= -->
-                        <li class="ch-nav__item">
-                            <a href="enterprise-subscription-billing/index.html">Quiz</a>
-                        </li>
-                        <li class="ch-nav__item">
-                            <a href="pricing/index.html">Q&A Forum</a>
-                        </li>
+                        {{--<li class="ch-nav__item">--}}
+                            {{--<a href="{{ action('QuizController@index') }}" hreflang="en">Quiz</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="ch-nav__item">--}}
+                            {{--<a href="pricing/index.html">Q&A Forum</a>--}}
+                        {{--</li>--}}
                         <!-- ======================================================================
                         Dropdown for developer section start
                         ======================================================================= -->
@@ -280,18 +325,6 @@
                                         </li>
                                     @endforeach
                                 @endif
-                                {{--<li class="ch-mnav__item">--}}
-                                {{--<a href="subscription-management/index.html">Subscription Management</a>--}}
-                                {{--</li>--}}
-                                {{--<li class="ch-mnav__item">--}}
-                                {{--<a href="recurring-billing-invoicing/index.html">Billing and Invoicing</a>--}}
-                                {{--</li>--}}
-                                {{--<li class="ch-mnav__item">--}}
-                                {{--<a href="recurring-payments/index.html">Payments and Accounting</a>--}}
-                                {{--</li>--}}
-                                {{--<li class="ch-mnav__item">--}}
-                                {{--<a href="saas-reporting/index.html">Reporting and Analytics</a>--}}
-                                {{--</li>--}}
                             </ul>
                         </div>
                         <!-- =================================
@@ -301,10 +334,15 @@
                         Mobile list start
                         ================================== -->
                         <div class="ch-mnav__blk">
+                            <h4 class="ch-mnav__title">Quiz</h4>
                             <ul class="ch-mnav__list">
-                                <li class="ch-mnav__item">
-                                    <a href="enterprise-subscription-billing/index.html">Quiz</a>
-                                </li>
+                                @if(isset($arrTopics))
+                                    @foreach($arrTopics as $topic)
+                                        <li class="ch-mnav__item">
+                                            <a href="{{ action('QuizController@index',$topic->slug) }}">{{ $course->trans->title }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                         <!-- =================================
@@ -313,13 +351,13 @@
                         <!-- =================================
                         Mobile list start
                         ================================== -->
-                        <div class="ch-mnav__blk">
-                            <ul class="ch-mnav__list">
-                                <li class="ch-mnav__item">
-                                    <a href="customers/index.html">Q&A Forum</a>
-                                </li>
-                            </ul>
-                        </div>
+                        {{--<div class="ch-mnav__blk">--}}
+                            {{--<ul class="ch-mnav__list">--}}
+                                {{--<li class="ch-mnav__item">--}}
+                                    {{--<a href="customers/index.html">Q&A Forum</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
                         <!-- =================================
                         Mobile list end
                         ================================== -->

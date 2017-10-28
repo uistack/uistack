@@ -27,7 +27,7 @@
     {{--<meta name="twitter:creator" content="@uistacks">--}}
     {{--<meta name="twitter:image:src" content="static/resources/og-image.png">--}}
     <meta name="twitter:domain" content="https://www.uistacks.com/">
-
+{{--    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/materialize.min.css') }}" />--}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/burger-menu.css') }}" />

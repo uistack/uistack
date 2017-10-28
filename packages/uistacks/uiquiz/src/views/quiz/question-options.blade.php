@@ -84,8 +84,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-success" href="{{ action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@edit',[$item->id]) }}"><i class="fa fa-edit"></i> {{ trans('Core::operations.edit') }}</a>
-                                                <a class="btn btn-sm btn-danger" onclick="confirmDelete(this)" data-toggle="modal" data-href="#full-width" data-id="{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif href="#full-width"><i class="fa fa-trash"></i> {{ trans('Core::operations.delete') }}</a>
+                                                <a class="btn btn-sm btn-success" href="{{ action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@edit',[$item->id]) }}"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-danger" onclick="confirmDelete(this)" data-toggle="modal" data-href="#full-width" data-id="{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif href="#full-width"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endif

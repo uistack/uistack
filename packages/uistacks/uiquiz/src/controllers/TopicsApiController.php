@@ -87,8 +87,8 @@ class TopicsApiController extends Controller
         }
         $topic->slug = $this->seoUrl($request->title_en);
         // Media
-//        $options['media']['main_image_id'] = $request->main_image_id;
-//        $topic->options = $options;
+        $options['media']['main_image_id'] = $request->main_image_id;
+        $topic->options = $options;
         $topic->save();
         $topic->order_id = $topic->id;
         $topic->save();

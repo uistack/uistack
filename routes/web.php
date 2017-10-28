@@ -125,6 +125,14 @@ Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@detail');
 Route::post('post-comment/{slug}', 'BlogController@comment');
 
+/*
+ * QUIZ ROUTE START HERE
+ */
+Route::get('quiz/{slug}', 'QuizController@index');
+Route::post('submit-quiz', 'QuizController@submitQuiz');
+/*
+ * QUIZ ROUTE END HERE
+ */
 // Catch all page controller (place at the very bottom)
 Route::get('{slug}/{slug2?}', [
     'uses' => 'LearnController@index'
