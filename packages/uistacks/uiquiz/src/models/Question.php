@@ -19,7 +19,7 @@ class Question extends Model
      */
 //    protected $hidden = ['slug', 'options', 'created_by', 'updated_by'];
 //
-    protected $with = ['trans', 'author', 'lastUpdateBy','topic','questionsOption'];
+    protected $with = ['trans', 'author', 'lastUpdateBy','topic','options'];
 
     /**
      * Set to null if empty
@@ -37,7 +37,7 @@ class Question extends Model
 
     public function options()
     {
-        return $this->hasMany(QuestionsOption::class, 'question_id')->withTrashed();
+        return $this->hasMany(QuestionsOption::class, 'question_id')->select(['id', 'question_id','created_by','active']);
     }
 
     /**
@@ -49,12 +49,6 @@ class Question extends Model
     {
         return $this->hasOne('\UiStacks\Uiquiz\Models\QuestionTrans', 'question_id')->where('lang', Lang::getlocale())->select("*");
 //        return $this->hasOne('\UiStacks\Tutorials\Models\QuestionTrans', 'question_id')->select("*");
-    }
-
-    public function questionsOption()
-    {
-//        return $this->hasMany('\UiStacks\Uiquiz\Models\QuestionsOption','question_id','id')->where('lang', Lang::getlocale())->select("*");
-        return $this->hasMany('\UiStacks\Uiquiz\Models\QuestionsOption','question_id','id')->select("*");
     }
 
     /**

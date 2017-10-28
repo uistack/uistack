@@ -36,26 +36,24 @@ class QuestionsOptionsController extends QuestionsOptionsApiController {
     public function index(Request $request) {
         $request->request->add(['paginate' => 20]);
         $items = $this->api->listItems($request);
-        return view('Quiz::quiz.question-options', compact('id','items', 'sections'));
+//        dd($items);
+        return view('Quiz::quiz.question-options', compact('id','items', 'questions'));
     }
 
 
     /**
-     *create section
+     *create question
      */
-    public function create(Request $request, $id) {
-        $course = Course::findOrFail($id);
-        if(!isset($course->trans)){
-            return back()->withInput()->withErrors("Record not found, please try again.");
-        }
-        return view('Quiz::quiz.question-option-create-edit', compact('id','course'));
+    public function create(Request $request) {
+        $questions = Question::where('active','1')->get();
+        return view('Quiz::quiz.question-option-create-edit', compact('id','questions'));
     }
 
     /**
-     *store section
+     *store question
      */
-    public function store(Request $request,$id) {
-        $store = $this->api->storeQuestionsOption($request,$id);
+    public function store(Request $request) {
+        $store = $this->api->storeQuestionsOption($request);
         $store = $store->getData();
 
         if (isset($store->errors)) {
@@ -68,19 +66,17 @@ class QuestionsOptionsController extends QuestionsOptionsApiController {
         if ($request->back) {
             return back();
         }
-        return redirect(action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@index',$id));
+        return redirect(action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@index'));
     }
     /**
      * @param
      * @return
      */
-    public function edit(Request $request, $id,$section_id) {
-//        dd("S");
-        $item = QuestionsOption::findOrFail($section_id);
-        $trans = QuestionsOptionTrans::where('section_id', $section_id)->get()->keyBy('lang')->toArray();
-        $course = Course::findOrFail($id);
-//        $sections = QuestionsOption::get();
-        return view('Quiz::quiz.question-option-create-edit', compact('id','item', 'trans','course'));
+    public function edit(Request $request, $id) {
+        $item = QuestionsOption::findOrFail($id);
+        $trans = QuestionsOptionTrans::where('questions_option_id', $item->id)->get()->keyBy('lang')->toArray();
+        $questions = Question::where('active',1)->get();
+        return view('Quiz::quiz.question-option-create-edit', compact('id','item', 'trans','questions'));
     }
 
     /**
@@ -145,7 +141,7 @@ class QuestionsOptionsController extends QuestionsOptionsApiController {
     public function changeStatus($id = "") {
         if ($id != "") {
 //            $repo = Uiquiz::where('id', $id)->first();
-            $repo = TutorialTrans::where('contact_id', $id)->first();
+            $repo = QuestionsOption::where('question_id', $id)->first();
             if($repo->is_read == "1"){
                 $repo->is_read = 0;
             }else{

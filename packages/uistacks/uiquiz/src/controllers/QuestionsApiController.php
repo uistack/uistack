@@ -152,7 +152,7 @@ class QuestionsApiController extends Controller
             }
         }
 
-        $response = ['message' => trans('Quiz::quiz.saved_successfully')];
+        $response = ['message' => trans('Core::operations.saved_successfully')];
         return response()->json($response, 201);
     }
 // Get SEO URL function here
@@ -205,7 +205,7 @@ class QuestionsApiController extends Controller
             $questionTrans->save();
         }
 
-        $response = ['message' => trans('Quiz::quiz.updated_successfully')];
+        $response = ['message' => trans('Core::operations.updated_successfully')];
         return response()->json($response, 201);
     }
 

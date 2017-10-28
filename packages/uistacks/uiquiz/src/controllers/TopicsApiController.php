@@ -68,7 +68,7 @@ class TopicsApiController extends Controller
         $en_name = TopicTrans::where('title', ucfirst(strtolower($request->title_en)))->first();
 
         if (isset($ar_name->title) || isset($en_name->title)) {
-            $response = ['alert-class'=>'alert-danger','message' => trans('Uiquiz::quiz.duplicate_section_msg')];
+            $response = ['alert-class'=>'alert-danger','message' => trans('Core::operations.duplicate_section_msg')];
             return response()->json($response, 201);
         }
 
@@ -103,7 +103,7 @@ class TopicsApiController extends Controller
             $topicTrans->save();
         }
 
-        $response = ['message' => trans('Uiquiz::quiz.saved_successfully')];
+        $response = ['message' => trans('Core::operations.saved_successfully')];
         return response()->json($response, 201);
     }
 // Get SEO URL function here
@@ -155,7 +155,7 @@ class TopicsApiController extends Controller
             $topicTrans->save();
         }
 
-        $response = ['message' => trans('Uiquiz::quiz.updated_successfully')];
+        $response = ['message' => trans('Core::operations.updated_successfully')];
         return response()->json($response, 201);
     }
 

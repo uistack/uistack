@@ -1,13 +1,13 @@
 @php
     $pageNameMode = trans('Core::operations.create');
-    $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/topic', 'name' => trans('Uiquiz::quiz.topic')];
+    $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/topics', 'name' => trans('Uiquiz::quiz.topic')];
     $action = action('\UiStacks\Uiquiz\Controllers\TopicsController@store');
     $method = '';
     $backFieldLabel = trans('admin.add_new_after_save');
     $submitButton = trans('admin.save');
     if(Request::is('*/edit')){
     $pageNameMode = trans('Core::operations.edit');
-    $breadcrumbs[] =  ['url' => '', 'name' => trans('Core::operations.edit').' '.trans('Uiquiz::quiz.topic')];
+    $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/topics', 'name' => trans('Core::operations.edit').' '.trans('Uiquiz::quiz.topic')];
     $action = action('\UiStacks\Uiquiz\Controllers\TopicsController@update', $item->id);
     $method = 'PATCH';
     $backFieldLabel = trans('admin.back_after_update');

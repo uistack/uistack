@@ -13,7 +13,6 @@ class QuestionsOption extends Model
     protected $table = 'questions_options';
 
     protected $fillable = ['question_id'];
-
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -21,7 +20,7 @@ class QuestionsOption extends Model
      */
 //    protected $hidden = ['slug', 'options', 'created_by', 'updated_by'];
 //
-    protected $with = ['trans', 'author', 'lastUpdateBy'];
+//    protected $with = ['trans', 'author', 'lastUpdateBy','question'];
 
 
     /**
@@ -46,68 +45,11 @@ class QuestionsOption extends Model
 
     public function question()
     {
-//        return [];
-        return $this->belongsTo('\UiStacks\Uiquiz\Models\Question', 'question_id','id');
+        return $this->belongsTo(Question::class, 'question_id')->select(['id','created_by','updated_by','active','slug']);
     }
+    
     /**
-     * Author relation.
-     */
-    public function author()
-    {
-        return $this->belongsTo('UiStacks\Users\Models\User', 'created_by')->select(['id', 'name']);
-    }
-
-    /**
-     * Get author attribute
-     */
-    public function getlastUpdateByAttribute()
-    {
-        return $this->lastUpdateBy();
-    }
-
-    /**
-     * lastUpdateBy relation.
-     */
-    public function lastUpdateBy()
-    {
-        return $this->belongsTo('UiStacks\Users\Models\User', 'updated_by')->select(['id', 'name']);
-    }
-
-
-    /**
-     * Scope a query to only include filterd tutorials name.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeFilterName($query)
-    {
-        $getName = '';
-        if(isset($_GET['name']) && !empty($_GET['name'])){
-            $getName = $_GET['name'];
-            return $query->whereHas('trans', function($q) use ($getName){
-                $q->where('name', 'LIKE', '%'.$getName.'%');
-            });
-        }
-    }
-
-    /**
-     * Scope a query to only include filterd tutorials section.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeFilterCategory($query)
-    {
-        $getCategory = '';
-        if(isset($_GET['category']) && !empty($_GET['category'])){
-            $getCategory = $_GET['category'];
-            return $query->where('category', $getCategory);
-        }
-    }
-
-    /**
-     * Scope a query to only include filterd tutorials status.
+     * Scope a query to only include filterd question option status.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -115,7 +57,6 @@ class QuestionsOption extends Model
     public function scopeFilterStatus($query)
     {
         $getStatus = '';
-        //dd($_GET['status']);
         if(isset($_GET['status']) && !empty($_GET['status'])){
             $getStatus = $_GET['status'];
             if($getStatus == 2){

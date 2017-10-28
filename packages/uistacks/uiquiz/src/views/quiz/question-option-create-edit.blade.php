@@ -2,15 +2,16 @@
     $pageNameMode = trans('Core::operations.create');
     $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/topics/', 'name' => trans('Uiquiz::quiz.topics')];
     $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/questions', 'name' => trans('Uiquiz::quiz.questions')];
-    $action = action('\UiStacks\Uiquiz\Controllers\QuestionsController@store');
+    $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/questions-options', 'name' => trans('Uiquiz::quiz.questions-options')];
+    $action = action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@store');
     $method = '';
     $backFieldLabel = trans('admin.add_new_after_save');
     $submitButton = trans('admin.save');
     if(Request::is('*/edit')){
     $pageNameMode = trans('Core::operations.edit');
-    $breadcrumbs[] =  ['url' => '', 'name' => trans('Core::operations.edit').' '.trans('Uiquiz::quiz.questions')];
-    $action = action('\UiStacks\Uiquiz\Controllers\QuestionsController@update', $item->id);
-    //$action = action('\UiStacks\Uiquiz\Controllers\QuestionsController@update');
+    $breadcrumbs[] =  ['url' => '', 'name' => trans('Core::operations.edit').' '.trans('Uiquiz::quiz.question-option')];
+    $action = action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@update', $item->id);
+    //$action = action('\UiStacks\Uiquiz\Controllers\QuestionsOptionsController@update');
     $method = 'PATCH';
     $backFieldLabel = trans('admin.back_after_update');
     $submitButton = trans('admin.update');
@@ -21,7 +22,7 @@
 
 @extends('admin.master')
 @section('page_title')
-    {{trans('Uiquiz::quiz.questions')}}
+    {{trans('Uiquiz::quiz.questions-options')}}
 @endsection
 @section('header')
     <link rel="stylesheet" href="{{ asset('public/media-dev.css')}}" />
@@ -35,11 +36,11 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i>
-                        {{trans('Uiquiz::quiz.question')}}
+                        {{trans('Uiquiz::quiz.question-option')}}
                     </h3>
                 </div>
                 <div class="panel-body">
-                    {{--<form class="form-horizontal" name="frm_questions_update" id="frm_questions_update" role="form"  method="post" >--}}
+                    {{--<form class="form-horizontal" name="frm_questions-options_update" id="frm_questions-options_update" role="form"  method="post" >--}}
                     <form action="{{ $action }}" method="POST" role="form" >
                         @if($method === 'PATCH')
                             <input type="hidden" name="_method" value="PATCH">
@@ -52,137 +53,53 @@
                                         @php
                                             $options = [];
                                             $options[] = ['value' => '', 'name' => '-- '.trans('Core::operations.select').' --'];
-                                            if(isset($topics) && $topics->count()){
-                                                foreach ($topics as $topic) {
-                                                    $topicName = '';
-                                                    if($topic->trans){
-                                                        $topicName = ucwords(strtolower($topic->trans->title));
+                                            if(isset($questions) && $questions->count()){
+                                                foreach ($questions as $question) {
+                                                    $questionName = '';
+                                                    if($question->trans){
+                                                        $questionName = $question->trans->question_text;
                                                     }
-                                                    $options[] = ['value' => $topic->id, 'name' => $topicName];
+                                                    $options[] = ['value' => $question->id, 'name' => $questionName];
                                                 }
                                             }
-                                           // dd($options);
+                                           //dd($questions);
                                         @endphp
                                         @include('Core::fields.select', [
-                                            'field_name' => 'topic_id',
-                                            'name' => trans('Uiquiz::quiz.topic'),
-                                            'options' => $options,
-                                            'required' => 'required',
+                                            'field_name' => 'question_id',
+                                            'name' => trans('Uiquiz::quiz.question'),
+                                            'options' => $options
                                         ])
-                                        {{--<p class="help-block"></p>--}}
-                                        {{--@if($errors->has('topic'))--}}
-                                        {{--<p class="help-block">--}}
-                                        {{--{{ $errors->first('topic') }}--}}
-                                        {{--</p>--}}
-                                        {{--@endif--}}
-
-                                        @include('Core::groups.languages', [
-                                            'fields' => [
-                                                0 => [
-                                                    'type' => 'textarea',
-                                                    'properties' => [
-                                                        'field_name' => 'question_text',
-                                                        'name' => 'Question text*',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ]
-                                            ]
-                                        ])
-                                        @if(!Request::is('*/edit'))
-                                        @include('Core::groups.languages', [
-                                            'fields' => [
-                                                0 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'option1',
-                                                        'name' => 'Option #1',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-                                                1 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'option2',
-                                                        'name' => 'Option #2',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-                                                2 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'option3',
-                                                        'name' => 'Option #3',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-                                                3 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'option4',
-                                                        'name' => 'Option #4',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-                                                4 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'option5',
-                                                        'name' => 'Option #5',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-
-                                            ]
-                                        ])
-                                        <div class="form-group">
-                                            {!! Form::label('correct', 'Correct', ['class' => 'control-label']) !!}
-                                            {!! Form::select('correct', $correct_options, old('correct'), ['class' => 'form-control']) !!}
-                                            <p class="help-block"></p>
-                                            @if($errors->has('correct'))
-                                                <p class="help-block">
-                                                    {{ $errors->first('correct') }}
-                                                </p>
-                                            @endif
-                                        </div>
-
+                                        <p class="help-block"></p>
+                                        @if($errors->has('question_id'))
+                                            <p class="help-block">
+                                                {{ $errors->first('question_id') }}
+                                            </p>
                                         @endif
 
                                         @include('Core::groups.languages', [
                                             'fields' => [
                                                 0 => [
-                                                    'type' => 'textarea',
-                                                    'properties' => [
-                                                        'field_name' => 'code_snippet',
-                                                        'name' => 'Code snippet',
-                                                        'placeholder' => ''
+                                                        'type' => 'input_text',
+                                                        'properties' => [
+                                                            'field_name' => 'option',
+                                                            'name' => 'Option*',
+                                                            'placeholder' => ''
+                                                        ]
                                                     ]
-                                                ],
-                                                1 => [
-                                                    'type' => 'textarea',
-                                                    'properties' => [
-                                                        'field_name' => 'answer_explanation',
-                                                        'name' => 'Answer explanation',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ],
-                                                2 => [
-                                                    'type' => 'input_text',
-                                                    'properties' => [
-                                                        'field_name' => 'more_info_link',
-                                                        'name' => 'More info link',
-                                                        'placeholder' => ''
-                                                    ]
-                                                ]
-
                                             ]
                                         ])
-
-
                                     </div>
                                     <div class="col-md-3 sidbare">
                                         <!-- Language field -->
                                     @include('Core::fields.languages')
                                     <!-- End Language field -->
+                                        @include('Core::fields.checkbox', [
+                                            'field_name' => 'correct',
+                                            'name' => "Correct",
+                                            'placeholder' => '',
+                                            'value' => ($item->trans->correct == 1) ? 1 : "0",
+                                            'checked' => ($item->trans->correct == 1) ? "checked" : "",
+                                        ])
                                         @include('Core::fields.checkbox', [
                                             'field_name' => 'active',
                                             'name' => trans('admin.active'),

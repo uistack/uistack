@@ -32,15 +32,14 @@ class QuestionsOptionsApiController extends Controller
     public function validatation($request)
     {
         $languages = config('uistacks.locales');
-        $rules['slug'] = 'unique:tutorials';
+        $rules['question_id'] = 'required';
         $rules = [];
         if(count($languages)) {
             foreach ($languages as $key => $language) {
                 $code = $language['code'];
                 if($request->language){
                     foreach($request->language as $lang){
-                        $rules['title_'.$code.''] = 'required|max:100';
-                        $rules['description_'.$code.''] = 'required';
+                        $rules['option_'.$code.''] = 'required|max:255';
                     }
                 }
             }
@@ -53,7 +52,7 @@ class QuestionsOptionsApiController extends Controller
      */
     public function listItems(Request $request)
     {
-        $questionsOptions = QuestionsOption::FilterStatus()->orderBy('id', 'DESC')->paginate($request->get('paginate'));
+        $questionsOptions = QuestionsOption::FilterStatus()->orderBy('id', 'ASC')->paginate($request->get('paginate'));
         return $questionsOptions;
     }
     /**
@@ -62,51 +61,51 @@ class QuestionsOptionsApiController extends Controller
      */
     public function storeQuestionsOption(Request $request)
     {
-//        dd($id);
         $validator = $this->validatation($request);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-        $ar_name = QuestionsOptionTrans::where('title', ucfirst(strtolower($request->name_ar)))->first();
-        $en_name = QuestionsOptionTrans::where('title', ucfirst(strtolower($request->name_en)))->first();
+        $ar_name = QuestionsOptionTrans::where('option', ucfirst(strtolower($request->option_ar)))->first();
+        $en_name = QuestionsOptionTrans::where('option', ucfirst(strtolower($request->option_en)))->first();
 
-        if (isset($ar_name->name) || isset($en_name->name)) {
-            $response = ['alert-class'=>'alert-danger','message' => trans('Tutorials::tutorials.duplicate_section_msg')];
+        if (isset($ar_name->option) || isset($en_name->option)) {
+            $response = ['alert-class'=>'alert-danger','message' => trans('Core::operations.duplicate_section_msg')];
             return response()->json($response, 201);
         }
 
-        $sections = new QuestionsOption();
+        $questionsOption = new QuestionsOption();
         if ($request->author) {
             $author = $request->author;
         } else {
             $author = Auth::user()->id;
         }
 
-        $sections->created_by = $author;
-        $sections->updated_by = $author;
-        $sections->question_id = $request->question_id;
-        $sections->active = false;
+        $questionsOption->created_by = $author;
+        $questionsOption->updated_by = $author;
+        $questionsOption->question_id = $request->question_id;
+        $questionsOption->active = false;
         if ($request->active) {
-            $sections->active = true;
+            $questionsOption->active = true;
         }
-        $sections->slug = $this->seoUrl($request->name_en);
-        $sections->save();
-        $sections->order_id = $sections->id;
-        $sections->save();
+        $questionsOption->save();
+        $questionsOption->order_id = $questionsOption->id;
+        $questionsOption->save();
 
         // Translation
         foreach ($request->language as $langCode) {
-            $name = 'title_' . $langCode;
-            $body = 'description_' . $langCode;
-            $sectionTrans = new QuestionsOptionTrans;
-            $sectionTrans->section_id = $sections->id;
-            $sectionTrans->title = ucwords(strtolower($request->$name));
-            $sectionTrans->description = $request->$body;
-            $sectionTrans->lang = $langCode;
-            $sectionTrans->save();
+            $option = 'option_' . $langCode;
+            $questionsOptionTrans = new QuestionsOptionTrans;
+            $questionsOptionTrans->questions_option_id = $questionsOption->id;
+            $questionsOptionTrans->option = $request->$option;
+            $questionsOptionTrans->correct = false;
+            if ($request->correct) {
+                $questionsOptionTrans->correct = true;
+            }
+            $questionsOptionTrans->lang = $langCode;
+            $questionsOptionTrans->save();
         }
 
-        $response = ['message' => trans('Tutorials::tutorials.saved_successfully')];
+        $response = ['message' => trans('Core::operations.saved_successfully')];
         return response()->json($response, 201);
     }
 // Get SEO URL function here
@@ -127,35 +126,36 @@ class QuestionsOptionsApiController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $section = QuestionsOption::find($id);
+        $questionsOption = QuestionsOption::find($id);
         if ($request->author) {
             $author = $request->author;
         } else {
             $author = Auth::user()->id;
         }
-        $section->updated_by = $author;
-        $section->active = false;
+        $questionsOption->updated_by = $author;
+        $questionsOption->active = false;
         if ($request->active) {
-            $section->active = true;
+            $questionsOption->active = true;
         }
-        $section->slug = $this->seoUrl($request->name_en);
-        $section->save();
+        $questionsOption->save();
         // Translation
         foreach ($request->language as $langCode) {
-            $name = 'title_' . $langCode;
-            $body = 'description_' . $langCode;
-            $sectionTrans = QuestionsOptionTrans::where('section_id', $section->id)->where('lang', $langCode)->first();
-            if (empty($sectionTrans)) {
-                $sectionTrans = new QuestionsOptionTrans;
-                $sectionTrans->section_id = $section->id;
-                $sectionTrans->lang = $langCode;
+            $option = 'option_' . $langCode;
+            $questionsOptionTrans = QuestionsOptionTrans::where('questions_option_id', $questionsOption->id)->where('lang', $langCode)->first();
+            if (empty($questionsOptionTrans)) {
+                $questionsOptionTrans = new QuestionsOptionTrans;
+                $questionsOptionTrans->questions_option_id = $questionsOption->id;
+                $questionsOptionTrans->lang = $langCode;
             }
-            $sectionTrans->title = ucwords(strtolower($request->$name));
-            $sectionTrans->description = $request->$body;
-            $sectionTrans->save();
+            $questionsOptionTrans->option = $request->$option;
+            $questionsOptionTrans->correct = false;
+            if ($request->correct) {
+                $questionsOptionTrans->correct = true;
+            }
+            $questionsOptionTrans->save();
         }
 
-        $response = ['message' => trans('Tutorials::tutorials.updated_successfully')];
+        $response = ['message' => trans('Core::operations.updated_successfully')];
         return response()->json($response, 201);
     }
 

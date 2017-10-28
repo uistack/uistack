@@ -28,7 +28,7 @@
                 <a class="btn btn-default" href="{{ action('\UiStacks\Uiquiz\Controllers\QuestionsController@create')}}">{{ trans('Core::operations.create') }} {{ trans('Uiquiz::quiz.question') }}</a>
             </div>
             @if($items->count() || $_GET)
-                @include('Quiz::quiz.filter')
+                @include('Quiz::quiz.question-filter')
             @endif
             @if($items->count())
                 <form method="POST" action="{{ url('/')."/ar/admin/questions/bulk-operations" }}" id="bulk" class="form-inline">

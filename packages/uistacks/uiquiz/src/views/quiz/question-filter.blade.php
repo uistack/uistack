@@ -22,7 +22,7 @@
             ])
 
 		  	<button type="submit" class="btn btn-default">{{ trans('Core::operations.filter') }}</button>
-		  	<a href="{{ action('\UiStacks\Uiquiz\Controllers\TopicsController@index')}}" class="btn btn-default">{{ trans('Core::operations.reset') }}</a>
+		  	<a href="{{ action('\UiStacks\Uiquiz\Controllers\QuestionsController@index')}}" class="btn btn-default">{{ trans('Core::operations.reset') }}</a>
 		</form>
 
 	</div>
