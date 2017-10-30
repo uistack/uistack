@@ -6,7 +6,7 @@
 @endsection
 @section('content')
     <div id="cb-wrapper-api-docs" class="">
-        @include('website.regions.learn-header')
+        @include('website.regions.quiz-header')
         <div id="cb-container" class="container">
             @include('website.learn.blocks.left-menu')
             <div id="cb-content" class="cb-content">
@@ -41,38 +41,37 @@
                     <input type="hidden" name="qnumber" value="1" size="25">
                     @if(isset($items))
                         @php
-                        $i = 0;
+                            $i = 0;
                         @endphp
                         @foreach($items as $item)
+                            @php
+                                $options = \UiStacks\Uiquiz\Models\QuestionsOption::where(["question_id"=> $item->id, "active"=>1])->get();
+                            @endphp
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     #{{ $i+1 }}. {{ $item->trans->question_text }}
                                 </div>
                                 <div class = "panel-body">
-                                    <div class="radio">
-                                        <label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>
-                                    </div>
+                                    @if(isset($options))
+                                        @foreach($options as $o => $option)
+                                            <div class="radio">
+                                                <label><input type="radio" name="answers[{{ $item->id }}]" id="question-option-{{ $option->id }}" value="{{ $option->id }}"> {{ $option->trans->option }}</label>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                     {{--<button type="submit" class="btn btn-sm btn-warning pull-right" name="btn_next" id="btn_next" >Next →</button>--}}
                                 </div>
                             </div>
-                        @php
-                        $i++;
-                        @endphp
+                            @php
+                                $i++;
+                            @endphp
                         @endforeach
                     @endif
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-sm btn-warning" name="btn_next" id="btn_next" >Next →</button>
-                    </div>
+                    @if(isset($items))
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-sm btn-warning" name="btn_next" id="btn_next" >Next →</button>
+                        </div>
+                    @endif
                 </form>
 
             </div>

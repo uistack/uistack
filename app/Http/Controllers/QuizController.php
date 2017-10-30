@@ -24,9 +24,9 @@ class QuizController extends Controller
 
     }
 
-    public function show(Request $request)
+    public function quiz(Request $request)
     {
-        dd($request);
+        return view('website.quiz.index', compact('items'));
     }
 
 }

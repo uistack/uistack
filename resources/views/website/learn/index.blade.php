@@ -19,8 +19,8 @@
                     </div>
                     {!! $contents->trans->body !!}
                     @else
-                        <h1>{{ $item->trans->name }} Tutorial</h1>
-                        {!! $item->trans->description !!}
+                        <h1>{{ isset($item->trans->name) ? $item->trans->name :"" }}</h1>
+                        {!! isset($item->trans->description) ? $item->trans->description : "" !!}
                     @endif
                 </div>
             </div>

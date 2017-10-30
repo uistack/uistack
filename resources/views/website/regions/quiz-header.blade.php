@@ -25,13 +25,13 @@
                 <div class="vspace-xs">
                     <ul class="nav navbar-nav navbar-left">
                         @php
-                            $arrCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->take(4)->get();
+                            $arrTopics = \UiStacks\Uiquiz\Models\Topic::where('active', 1)->take(4)->get();
                         @endphp
-                        @if(isset($arrCourses))
-                            @foreach($arrCourses as $course)
-                                <li class="@if($course->slug == \Request::segment(1)) active @endif">
-                                    <a data-lang="lang" rel="nofollow" href="{{ action('LearnController@index',$course->slug) }}" title="">
-                                        {{ $course->trans->name }}
+                        @if(isset($arrTopics))
+                            @foreach($arrTopics as $topic)
+                                <li class="@if($topic->slug == \Request::segment(1)) active @endif">
+                                    <a data-lang="lang" rel="nofollow" href="{{ action('QuizController@index',$topic->slug) }}" title="{{ $topic->trans->title }}">
+                                        {{ $topic->trans->title }}
                                     </a>
                                 </li>
                                 {{--<li class=""><a data-lang="lang" rel="nofollow" href="?lang=curl" title="">--}}
@@ -45,21 +45,6 @@
 
                                 {{--<li class=""><a data-lang="lang" rel="nofollow" href="?lang=ruby" title="">--}}
                                 {{--RUBY--}}
-                                {{--</a>--}}
-                                {{--</li>--}}
-
-                                {{--<li class=""><a data-lang="lang" rel="nofollow" href="?lang=python" title="">--}}
-                                {{--PYTHON--}}
-                                {{--</a>--}}
-                                {{--</li>--}}
-
-                                {{--<li class=""><a data-lang="lang" rel="nofollow" href="?lang=java" title="">--}}
-                                {{--JAVA--}}
-                                {{--</a>--}}
-                                {{--</li>--}}
-
-                                {{--<li class=""><a data-lang="lang" rel="nofollow" href="?lang=dotnet" title="">--}}
-                                {{--.NET--}}
                                 {{--</a>--}}
                                 {{--</li>--}}
 
@@ -92,37 +77,37 @@
         </div>
 
         {{--<div class="cb-scrollmenu-container hidden-sm hidden-xs" id="cb-scroll-menu">--}}
-        {{--<div class="cb-scrollmenu__title">Orders</div>--}}
-        {{--<div class="cb-scrollmenu__nav">--}}
-        {{--<div class="cb-scrollmenu__current">Introduction</div>--}}
-        {{--<ul class="nav" id="cb-nav-group">--}}
-        {{--<li>--}}
-        {{--<a href="#order_attributes" class="list-group-item">--}}
-        {{--Order attributes--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-        {{--<a href="#retrieve_an_order" class="list-group-item">--}}
-        {{--Retrieve an order--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-        {{--<a href="#create_an_order" class="list-group-item">--}}
-        {{--Create an order--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-        {{--<a href="#list_orders" class="list-group-item">--}}
-        {{--List orders--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-        {{--<a href="#update_an_order" class="list-group-item">--}}
-        {{--Update an order--}}
-        {{--</a>--}}
-        {{--</li>--}}
-        {{--</ul>--}}
-        {{--</div>--}}
+            {{--<div class="cb-scrollmenu__title">Orders</div>--}}
+            {{--<div class="cb-scrollmenu__nav">--}}
+                {{--<div class="cb-scrollmenu__current">Introduction</div>--}}
+                {{--<ul class="nav" id="cb-nav-group">--}}
+                    {{--<li>--}}
+                        {{--<a href="#order_attributes" class="list-group-item">--}}
+                            {{--Order attributes--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#retrieve_an_order" class="list-group-item">--}}
+                            {{--Retrieve an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#create_an_order" class="list-group-item">--}}
+                            {{--Create an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#list_orders" class="list-group-item">--}}
+                            {{--List orders--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#update_an_order" class="list-group-item">--}}
+                            {{--Update an order--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
         {{--</div>--}}
 
     </div>

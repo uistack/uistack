@@ -117,12 +117,12 @@ class EmailTemplatesApiController extends Controller {
             $emailtemplateTrans->lang = $langCode;
             $emailtemplateTrans->save();
 
-//            $path = public_path();
-//            $loc = substr($path,0,strripos(public_path(), "/"));
-//            $view_location = $loc . "/resources/views/emails/" . $emailtemplateTrans->template_key . ".blade.php";
-//            $view_resource = fopen($view_location, "w+");
-//            fwrite($view_resource, $emailtemplateTrans->html_content);
-//            fclose($view_resource);
+            $path = public_path();
+            $loc = substr($path,0,strripos(public_path(), "/"));
+            $view_location = $loc . "/resources/views/emails/" . $emailtemplateTrans->template_key . '-' . $langCode . ".blade.php";
+            $view_resource = fopen($view_location, "w+");
+            fwrite($view_resource, $emailtemplateTrans->html_content);
+            fclose($view_resource);
         }
 
         $response = ['message' => trans('Activities::activities.saved_successfully')];
@@ -182,14 +182,14 @@ class EmailTemplatesApiController extends Controller {
             $emailtemplateTrans->html_content = $request->$message;
 //            $emailtemplateTrans->template_key = $template_key;
             $emailtemplateTrans->save();
-
-            $path = public_path();
-            $loc = substr($path,0,strripos(public_path(), "/"));
-//            $view_location = $loc . "/resources/views/emails/" . $emailtemplateTrans->template_key.'-'.Lang::getlocale() . ".blade.php";
-            $view_location = $loc . "/resources/views/emails/" . $emailtemplateTrans->template_key.'-'.$langCode . ".blade.php";
-            $view_resource = fopen($view_location, "w+");
-            fwrite($view_resource, $emailtemplateTrans->html_content);
-            fclose($view_resource);
+            if ($emailtemplateTrans->template_key != "active-user"){
+                $path = public_path();
+                $loc = substr($path, 0, strripos(public_path(), "/"));
+                $view_location = $loc . "/resources/views/emails/" . $emailtemplateTrans->template_key . '-' . $langCode . ".blade.php";
+                $view_resource = fopen($view_location, "w+");
+                fwrite($view_resource, $emailtemplateTrans->html_content);
+                fclose($view_resource);
+            }
         }
 
         $response = ['message' => trans('Activities::activities.updated_successfully')];

@@ -11,9 +11,15 @@
     <input type="hidden" id="contact_email_valid_validation_msg" value="{{trans('Contactus::contactus.contact_email_valid_validation_msg')}}"/>
     <input type="hidden" id="contact_message_req_validation_msg" value="{{trans('Contactus::contactus.contact_message_req_validation_msg')}}"/>
     <div class="sb-site-container">
-        @include('website.home.blocks.top-head')
+        {{--@include('website.home.blocks.top-head')--}}
         @include('website.regions.header')
-        <div class="ms-bg-fixed mb-6 mt-4">
+        <div class="container">
+            &nbsp;
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="ms-bg-fixed">
             <div class="container text-center">
                 <script async defer src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <!-- Home Page -->
@@ -100,10 +106,7 @@
                     <div class="card card-primary animated fadeInUp animation-delay-7">
                         <div class="card-block">
                             <div class="text-center mb-2">
-                                <span class="ms-logo ms-logo-sm mr-1">SB</span>
-                                <h3 class="no-m ms-site-title">Sy
-                                    <span>Bace</span>
-                                </h3>
+                                <img src="{{ url('/') }}/public/website_assets/img/uistacks.png" alt="logo"/>
                             </div>
                             <address class="no-mb">
                                 {{--<p>--}}
@@ -124,11 +127,10 @@
                         </div>
                     </div>
                     <div class="card card-primary animated fadeInUp animation-delay-7">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="zmdi zmdi-map"></i>Map</h3>
-                        </div>
-                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA75QloU3HhpSAadRbOqLwMnMGsrZw9t0U'></script><div style='overflow:hidden;height:350px;width:360px;'><div id='gmap_canvas' style='height:350px;width:360px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='http://maps-website.com/'>google map wordpress widget</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=0dbaad1270aed7c9a22b9416f4f74179fe92983c'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(25.5938179,85.16053319999992),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(25.5938179,85.16053319999992)});infowindow = new google.maps.InfoWindow({content:'<strong>SYBACE</strong><br>Kankarbagh<br>800026 Patna<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                        {{--<div class="card-header">--}}
+                            {{--<h3 class="card-title"><i class="zmdi zmdi-map"></i>Map</h3>--}}
+                        {{--</div>--}}
+                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA75QloU3HhpSAadRbOqLwMnMGsrZw9t0U'></script><div style='overflow:hidden;height:320px;width:360px;'><div id='gmap_canvas' style='height:320px;width:360px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='http://maps-website.com/'>google map wordpress widget</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=69389f1929ab9d2477992403ef5ed09b21739bf5'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(18.579305,73.98234530000002),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(18.579305,73.98234530000002)});infowindow = new google.maps.InfoWindow({content:'<strong>UiStacks</strong><br>Wagholi<br>412207 Pune<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
                         {{--<iframe width="100%" height="340" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48342.06480344582!2d-73.980069429762!3d40.775680208459505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral+Park!5e0!3m2!1sen!2sus!4v1491233314840"></iframe>--}}
                     </div>
                 </div>
@@ -136,7 +138,6 @@
         </div>
         @include('website.regions.footer')
     </div>
-    @include('website.regions.leftbar')
 @endsection
 @section('footer')
     <link rel="stylesheet" href="{{ asset('public/website_assets/intl-telephone/css/intlTelInput.css') }}">

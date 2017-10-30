@@ -137,40 +137,6 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- ======================================================================
-                        Dropdown for Product section end
-                        ======================================================================= -->
-                    {{--<li class="ch-nav__item">--}}
-                    {{--<a href="{{ action('QuizController@index') }}" hreflang="en">Quiz</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="ch-nav__item">--}}
-                    {{--<a href="pricing/index.html">Q&A Forum</a>--}}
-                    {{--</li>--}}
-                    <!-- ======================================================================
-                        Dropdown for developer section start
-                        ======================================================================= -->
-                    {{--<li class="ch-nav__item" data-ch-dd="true">--}}
-                    {{--<div class="ch-nav__dropdown">Developers</div>--}}
-                    {{--<div class="ch-dropdown">--}}
-                    {{--<ul class="ch-dropdown__list">--}}
-                    {{--<li class="ch-dropdown__item">--}}
-                    {{--<a href="https://apidocs.uistacks.com/docs/" class="ch-dropdown__link">API Documentation</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="ch-dropdown__item">--}}
-                    {{--<a href="tutorials/index.html" class="ch-dropdown__link">API Integration Tutorials</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="ch-dropdown__item">--}}
-                    {{--<a href="http://status.uistacks.com/" class="ch-dropdown__link">API Status</a>--}}
-                    {{--</li>--}}
-                    {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--</li>--}}
-                    <!-- ======================================================================
-                        Dropdown for developer section end
-                        ======================================================================= -->
-                        <!-- ======================================================================
-                        Dropdown for more section start
-                        ======================================================================= -->
                         <li class="ch-nav__item" data-ch-dd="true">
                             <div class="ch-nav__more"><span></span></div>
 
@@ -185,15 +151,6 @@
                                     <li class="ch-dropdown__item">
                                         <a href="{{ action('BlogController@index') }}" class="ch-dropdown__link">Blog</a>
                                     </li>
-                                    {{--<li class="ch-dropdown__item">--}}
-                                    {{--<a href="resources/index.html" class="ch-dropdown__link">Resources</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li class="ch-dropdown__item">--}}
-                                    {{--<a href="integrations/index.html" class="ch-dropdown__link">Integrations</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li class="ch-dropdown__item">--}}
-                                    {{--<a href="help/updates/index.html" class="ch-dropdown__link">What's New?</a>--}}
-                                    {{--</li>--}}
                                 </ul>
                             </div>
                         </li>
@@ -238,12 +195,21 @@
                         <!-- ======================================================================
                        Dropdown for resource section start
                        ======================================================================= -->
-                        <li class="ch-nav__item">
-                            <a href="{{ action('WebsiteController@login') }}">Sign in</a>
-                        </li>
-                        <li class="ch-nav__item">
-                            <a href="{{ action('WebsiteController@register') }}" class="ch-nav__btn">Sign Up</a>
-                        </li>
+                        @if(Auth::guest())
+                            <li class="ch-nav__item">
+                                <a href="{{ action('WebsiteController@login') }}">Sign in</a>
+                            </li>
+                            <li class="ch-nav__item">
+                                <a href="{{ action('WebsiteController@register') }}" class="ch-nav__btn">Sign Up</a>
+                            </li>
+                        @else
+                            <li class="ch-nav__item">
+                                <a href="{{ action('WebsiteController@dashboard') }}" class="ch-nav__btn">My Account</a>
+                            </li>
+                            <li class="ch-nav__item">
+                                <a href="{{ action('WebsiteController@logout') }}" class="ch-nav__btn">Signout</a>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
             </div>

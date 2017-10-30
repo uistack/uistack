@@ -66,14 +66,15 @@ Route::get('/logout', 'WebsiteController@logout');
 
 // Registerd user routes
 Route::group(['prefix' => $locale], function() {
+    //email verification
+    Route::get('verify-user-email/{id}', 'WebsiteController@verifyUserEmail');
     // User profile
-    Route::get('verify-account/{id}', 'WebsiteController@verifyUserAccount');
-    Route::post('post-verify-account', 'WebsiteController@postVerifyAccount');
     Route::get('user', 'WebsiteController@dashboard');
     Route::get('user/profile', 'WebsiteController@profile');
     Route::get('user/edit-profile', 'WebsiteController@editProfile');
-    Route::post('user/post-edit', 'WebsiteController@postEdit');
-    Route::get('user/reset-mobile', 'WebsiteController@resetMobile');
+    Route::get('user/account-setting', 'WebsiteController@accountSetting');
+    Route::post('user/edit-profile', 'WebsiteController@updateProfile');
+    Route::post('user/change-password', 'WebsiteController@updatePassword');
 });
 Route::get('check-email-vailability', 'WebsiteController@checkEmailAvailability');
 
@@ -128,12 +129,14 @@ Route::post('post-comment/{slug}', 'BlogController@comment');
 /*
  * QUIZ ROUTE START HERE
  */
+Route::get('quiz', 'QuizController@quiz');
 Route::get('quiz/{slug}', 'QuizController@index');
 Route::post('submit-quiz', 'QuizController@submitQuiz');
 /*
  * QUIZ ROUTE END HERE
  */
 // Catch all page controller (place at the very bottom)
+Route::get('tutorial', 'LearnController@learn');
 Route::get('{slug}/{slug2?}', [
     'uses' => 'LearnController@index'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');

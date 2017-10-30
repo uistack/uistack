@@ -41,7 +41,8 @@
     @yield('header')
 </head>
 
-<body class="body">
+{{--<body class="body">--}}
+<body class="">
 @include('website.blocks.message')
 <!-- =====================================================================================
 Header Part start

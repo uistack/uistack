@@ -32,9 +32,9 @@ class LearnController extends Controller
 
     }
 
-    public function show(Request $request,$slug = null)
+    public function learn(Request $request,$slug = null)
     {
-        dd($request);
+        return view('website.learn.index', compact('item','sections','contents'));
     }
 
 }

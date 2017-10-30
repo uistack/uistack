@@ -59,7 +59,7 @@
                 <div id="cb-user-login" class="clearfix">
                     <div  class="cb-form-container cn-login__form cn-form" >
                         @include('website.blocks.page-message')
-                        <form id="users_login_submit" name="users_login_submit" method="post" action="{{ action('WebsiteController@postRegister') }}" autocomplete="on" data-loading-text="Loading..." validate="true" >
+                        <form id="users_login_submit" name="users_login_submit" method="post" action="{{ action('WebsiteController@postRegister') }}" autocomplete="on" validate="true" >
                             <div class="cn-login__form-title">Create Your Account on UiStacks</div>
                             <div class="cn-form__field">
                                 <input type="text" autofocus="true" name="name" id="name" value="" class="cn-form__control" placeholder="Full Name" validate="true">
@@ -94,7 +94,6 @@
                                     <a class="cn-login__anchor" id="cb-forgot-pwd-link" tabindex="-1">Forgot password?</a>
                                 </div>
                             </div>
-                            <input type ='hidden'  name="login_token"  value="ikp5A5KjvYdkq7d0jC8IIsopdRI9Ia8Q" />
                         </form>
                     </div>
                     <script>
@@ -165,7 +164,7 @@
 @endsection
 @section('footer')
     <script src="{{ asset('public/website_assets/js/user/modernizr-2.5.3.js') }}"></script>
-    <script src="{{ asset('public/website_assets/js/user/ajaxhandler.js') }}"></script>
+    {{--<script src="{{ asset('public/website_assets/js/user/ajaxhandler.js') }}"></script>--}}
     <script src="{{ asset('public/website_assets/js/user/collapse.js') }}"></script>
     <script src="{{ asset('public/website_assets/js/user/users.js') }}"></script>
 @stop

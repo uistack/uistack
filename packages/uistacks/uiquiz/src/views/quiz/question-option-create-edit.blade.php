@@ -97,8 +97,8 @@
                                             'field_name' => 'correct',
                                             'name' => "Correct",
                                             'placeholder' => '',
-                                            'value' => ($item->trans->correct == 1) ? 1 : "0",
-                                            'checked' => ($item->trans->correct == 1) ? "checked" : "",
+                                            'value' => (isset($item->trans->correct) && $item->trans->correct == 1) ? 1 : "0",
+                                            'checked' => (isset($item->trans->correct) && $item->trans->correct == 1) ? "checked" : "",
                                         ])
                                         @include('Core::fields.checkbox', [
                                             'field_name' => 'active',

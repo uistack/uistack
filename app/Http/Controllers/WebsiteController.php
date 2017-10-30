@@ -196,18 +196,9 @@ class WebsiteController extends Controller {
      * @var view
      */
     public function postRegister(Request $request) {
+//        error_reporting(E_ALL);
+//        ini_set('display_errors','on');
 //        dd($request);
-        Validator::extend('phone_number_must_between', function($attribute, $value, $parameters, $validator) {
-            if (!((strlen($value) == 12 && substr($value, 0, 4) == "9665" ) || (strlen($value) == 10 && substr($value, 0, 2) == "05") || (strlen($value) == 9 && substr($value, 0, 1) == "5"))) {
-                return false;
-            } else {
-                return true;
-            }
-        });
-        $messages = array(
-            'phone_number_must_between' => trans('Users::users.phone_number_must_between')
-        );
-
         $this->validate($request, [
             'name' => 'required|unique:users|max:255',
             //            'country' => 'required',
@@ -215,8 +206,9 @@ class WebsiteController extends Controller {
             'email' => 'required|email|unique:users',
             'phone' => 'required|numeric|unique:users',
             'password' => 'required|confirmed|min:6|max:20',
-        ], $messages);
+        ]);
         $emaiUsername = explode('@',$request->email);
+        $activation_code = $this->generateReferenceNumber();
         $user = new User;
         $user->name = $request->name;
         $user->username = $emaiUsername[0];
@@ -232,9 +224,9 @@ class WebsiteController extends Controller {
         if ($request->email_show) {
             $user->email_show = true;
         }
-        $user->confirmation_code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
         $user->email_code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
 
+        $user->confirmation_code = $activation_code;
         $user->save();
 
         $user_id = $user->id;
@@ -269,9 +261,13 @@ class WebsiteController extends Controller {
         // Send email
 
         //Assign values to all macros
+        $arr_keyword_values = array();
+        //Assign values to all macros
         $arr_keyword_values['username'] = $request->name;
-        $arr_keyword_values['activationKey'] = $user->email_code;
-//        $arr_keyword_values['contactDate'] = date("jS F Y h:i:s A");
+        $arr_keyword_values['email'] = $request->email;
+        $arr_keyword_values['password'] = $request->password;
+        $arr_keyword_values['VERIFICATION_LINK'] = action('WebsiteController@verifyUserEmail',$activation_code);
+        $arr_keyword_values['SITE_TITLE'] = Setting::find(1)->value;
 
         $name = Setting::find(1)->value;
         $email = Setting::find(3)->value;
@@ -292,19 +288,46 @@ class WebsiteController extends Controller {
             dd($e->getMessage());
         }
 
-        return redirect(action('WebsiteController@verifyUserAccount', [$user->id, $user->username, 'confirm_account']));
+//        return redirect(action('WebsiteController@verifyUserAccount', [$user->id, $user->username, 'confirm_account']));
+        return redirect(action('WebsiteController@index'));
+    }
+    private function generateReferenceNumber() {
+        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
     }
     /**
      * Confirm email
      */
-    public function verifyUserAccount($userId, $userName, $confirmationType) {
-        $user = User::where('id', $userId)->where('phone', $userName)->first();
-        if (!$user) {
-            alert(404);
-        } elseif (!$user->confirmation_code) {
-            return redirect('/');
+    public function verifyUserEmail($activation_code) {
+        $user_informations = User::where(array('confirmation_code'=> $activation_code))->first();
+        if (isset($user_informations)) {
+            if ($user_informations->active == "0") {
+//                dd("1st");
+                //updating the user status to active
+                $user_informations->active = true;
+                $user_informations->confirmed = true;
+                $user_informations->confirmation_code = '';
+                $user_informations->save();
+                \Session::flash('alert-class', 'alert-success');
+                $successMsg = trans('project.account_confirmed_successfully');
+//                Auth::logout();
+                \Session::flash('message', $successMsg);
+                return redirect(action('WebsiteController@index'));
+            } else {
+//                dd("2nd");
+                $user_informations->confirmation_code = '';
+                $user_informations->save();
+                \Session::flash('alert-class', 'alert-danger');
+                \Session::flash('message', trans('project.confirmation_link_invalid'));
+//                Auth::logout();
+                return redirect(action('WebsiteController@index'));
+            }
+        } else {
+//            dd("3rd");
+            \Session::flash('alert-class', 'alert-danger');
+            \Session::flash('message', trans('project.confirmation_link_invalid'));
+//            Auth::logout();
+            return redirect(action('WebsiteController@index'));
         }
-        return view('website.auth.confirm-email', compact('userId', 'confirmationType'));
     }
     /**
      * Confirm user account by email.
@@ -346,7 +369,7 @@ class WebsiteController extends Controller {
             $webmeta['title'] = "Edit Profile";
             $webmeta['keywords'] = "Edit Profile";
             $webmeta['description'] = "Edit Profile";
-            return view('website.auth.edit', compact('webmeta','item', 'countries', 'areas', 'edit'));
+            return view('website.profile.edit', compact('webmeta','item', 'countries', 'areas', 'edit'));
         } else {
             return redirect('/');
         }
@@ -640,44 +663,15 @@ class WebsiteController extends Controller {
      */
     public function profile() {
         $this->redirectWhenInactive();
-
         if (isset(Auth::user()->id)) {
             $item = User::findOrFail(Auth::user()->id);
-
-            $ad = Ad::where('created_by', Auth::user()->id)->orderBy('id', 'Desc')->limit(4)->get();
-            $ads_count = Ad::where('created_by', Auth::user()->id)->get();
-            $favourite = Favourite::where('user_id', Auth::user()->id)->limit(4)->get();
-            $favourite_count = Favourite::where('user_id', Auth::user()->id)->get();
-            $comment = Comment::where('user_id', Auth::user()->id)->where('active', 1)->limit(4)->get();
-            $comment_count = Comment::where('user_id', Auth::user()->id)->where('active', 1)->get();
-
-
-            if (isset($comment)) {
-                foreach ($comment as $key => $value) {
-                    $user_comments[$key]['comment'] = $comment[$key]->comment;
-                    $user_comments[$key]['id'] = $comment[$key]->id;
-                    $user_comments[$key]['ad_id'] = $comment[$key]->ad_id;
-                    $user_comments[$key]['section'] = $comment[$key]->section;
-                    $user_comments[$key]['commentUser'] = isset($comment[$key]->commentUser->trans->name) ? $comment[$key]->commentUser->trans->name : "";
-                    $user_comments[$key]['thumbnail'] = isset($comment[$key]->commentUser->media->main_image->styles['thumbnail']) ? $comment[$key]->commentUser->media->main_image->styles['thumbnail'] : "uploads/fournotfour.jpeg";
-                    $user_comments[$key]['created_at'] = $comment[$key]->created_at;
-                }
-            }
-            if (isset($favourite)) {
-                foreach ($favourite as $key => $value) {
-                    $user_fav[$key]['ad_id'] = $favourite[$key]->ad_id;
-                    $user_fav[$key]['section'] = $favourite[$key]->section;
-                    $user_fav[$key]['commentUser'] = isset($favourite[$key]->favUser->trans->name) ? $favourite[$key]->favUser->trans->name : "";
-                    $user_fav[$key]['thumbnail'] = isset($favourite[$key]->favUser->media->main_image->styles['thumbnail']) ? $favourite[$key]->favUser->media->main_image->styles['thumbnail'] : "uploads/fournotfour.jpeg";
-                    $user_fav[$key]['created_at'] = $favourite[$key]->created_at;
-                }
-            }
-            $webmeta['title'] = "Profile";
-            $webmeta['keywords'] = "Profile";
-            $webmeta['description'] = "Profile";
-            return view('website.profile.profile', compact('ads_count', 'favourite_count', 'comment_count', 'user_fav', 'item', 'ad', 'comment', 'user_comments'));
+            $countries = Country::where('active', 1)->get();
+            $areas = Area::where('country_id', $item->country_id)->get();
+            $edit = 1;
+//dd($item);
+            return view('website.profile.profile', compact('item', 'countries', 'areas'));
         } else {
-            return redirect('/');
+            return redirect(action('WebsiteController@index'));
         }
     }
 
