@@ -49,7 +49,7 @@
                             <div class="text-18">Get in touch with us at <a href="mailto:support@uistacks.com">support@uistacks.com</a> for any queries</div>
                             <div class="block-top-space-sm">- Or -</div>
                             <div class="block-space-sm">
-                                <a href="index.html" class="btn btn-default"><span class="fa fa-long-arrow-left"></span> Go back to help and support</a>
+                                <a href="{{ url('/') }}" class="btn btn-default"><span class="fa fa-long-arrow-left"></span> Go back to help and support</a>
                             </div>
                         </div>
                         <div id="search-result-heading" class="search-result-heading" style="display:none;">

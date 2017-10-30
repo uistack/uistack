@@ -70,30 +70,17 @@
                     ========================================== -->
                     <div class="cf-nav__col hidden-xs">
                         <div class="cf-nav__title">Tutorials</div>
+                        @php
+                            $allCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->take(8)->get();
+                        @endphp
                         <ul class="cf-nav__list">
-                            <li class="cf-nav__item">
-                                <a href="help/updates/index.html" style="color: #9f95fc;">
-                                    HTML
-                                </a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="subscription-management/index.html">CSS</a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="recurring-billing-invoicing/index.html">jQuery</a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="recurring-payments/index.html">PHP</a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="saas-reporting/index.html">MySQL</a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="integrations/index.html">NodeJS</a>
-                            </li>
-                            <li class="cf-nav__item">
-                                <a href="integrations/index.html">Ruby on Rails</a>
-                            </li>
+                            @if(isset($allCourses))
+                                @foreach($allCourses as $course)
+                                    <li class="cf-nav__item">
+                                        <a href="{{ action('LearnController@index',$course->slug) }}" style="color: #9f95fc;">{{ $course->trans->name }}</a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                     <!-- ========================================
