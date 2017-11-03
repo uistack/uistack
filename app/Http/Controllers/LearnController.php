@@ -20,12 +20,12 @@ class LearnController extends Controller
         $item = Course::where('slug', $slug[0])->where('active', 1);
         $item = $item->firstOrFail();
 //        dd($item);
-        $sections = Section::where('course_id', $item->id)->where('active', 1)->get();
+        $sections = Section::where('course_id', $item->id)->where('active', 1)->orderBy('order_id', 'ASC')->get();
         $contents = [];
         if(isset($slug[1])){
             $contents = Tutorial::where('slug', $slug[1])->where('active', 1)->first();
         }else{
-            $sections = Section::where('course_id', $item->id)->where('active', 1)->get();
+            $sections = Section::where('course_id', $item->id)->where('active', 1)->orderBy('order_id', 'ASC')->get();
             $contents = Tutorial::where('section_id', $sections[0]->id)->where('active', 1)->first();
         }
         return view('website.learn.index', compact('item','sections','contents'));

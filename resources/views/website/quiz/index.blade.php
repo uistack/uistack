@@ -1,85 +1,126 @@
 @extends('website.master')
 @section('header')
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/tp_swiftype.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/quiz/quiz.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/main.css') }}" />
+    <style type="text/css">
+
+    </style>
 @endsection
 @section('content')
-    <div id="cb-wrapper-api-docs" class="">
-        @include('website.regions.quiz-header')
-        <div id="cb-container" class="container">
-            @include('website.learn.blocks.left-menu')
-            <div id="cb-content" class="cb-content">
-                <p>Answer these questions. There's no time limit. </p>
-                {{--<div class="">--}}
-                {{--<div class="">--}}
-                {{--<p class="" style="margin-bottom:30px;">1. What does ASP stand for?</p>--}}
-                {{--<form role="form" name="quizform" action="quiztest.asp?qtest=ASP" method="post">--}}
-                {{--<input type="hidden" name="starttime" value="4/10/2016 6:02:08 AM">--}}
-                {{--<input type="hidden" name="answers" value="0000000000000000000000000" size="25">--}}
-                {{--<input type="hidden" name="qnumber" value="1" size="25">--}}
-                {{--<div class="radio">--}}
-                {{--<label><input type="radio" name="quiz" id="1" value="1"> Active Server Pages</label>--}}
-                {{--</div>--}}
-                {{--<div class="radio">--}}
-                {{--<label><input type="radio" name="quiz" id="2" value="2"> All Standard Pages</label>--}}
-                {{--</div>--}}
-                {{--<div class="radio">--}}
-                {{--<label><input type="radio" name="quiz" id="3" value="3"> A Server Page</label>--}}
-                {{--</div>--}}
-                {{--<div class="radio">--}}
-                {{--<label><input type="radio" name="quiz" id="4" value="4"> Active Standard Pages</label>--}}
-                {{--</div>--}}
-                {{--<br>--}}
-                {{--<input type="submit" class="w3-btn w3-orange w3-large w3-text-white" value=" Next ">--}}
-                {{--</form>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                <form role="form" name="quizform" action="{{ action('QuizController@submitQuiz') }}" method="post">
-                    <input type="hidden" name="starttime" value="4/10/2016 6:02:08 AM">
-                    <input type="hidden" name="answers" value="0000000000000000000000000" size="25">
-                    <input type="hidden" name="qnumber" value="1" size="25">
-                    @if(isset($items))
-                        @php
-                            $i = 0;
-                        @endphp
-                        @foreach($items as $item)
-                            @php
-                                $options = \UiStacks\Uiquiz\Models\QuestionsOption::where(["question_id"=> $item->id, "active"=>1])->get();
-                            @endphp
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    #{{ $i+1 }}. {{ $item->trans->question_text }}
+    <div class="st-container">
+        @include('website.regions.learn-header')
+        @include('website.quiz.blocks.left-menu')
+        @include('website.quiz.blocks.right-menu')
+        {{--@include('website.regions.learn-header')--}}
+        <div class="st-pusher" id="content">
+            <!-- sidebar effects INSIDE of st-pusher: -->
+            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+            <!-- this is the wrapper for the content -->
+            <div class="st-content">
+                <!-- extra div for emulating position:fixed of the menu -->
+                <div class="st-content-inner padding-top-none">
+                    <div class="page-section half bg-white">
+                        <div class="container-fluid">
+                            <div class="section-toolbar">
+                                <div class="cell">
+                                    <div class="media width-120 v-middle margin-none">
+                                        <div class="media-left">
+                                            <div class="icon-block bg-grey-200 s30"><i class="fa fa-question"></i></div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text-body-2 text-light margin-none">Questions</p>
+                                            <p class="text-title text-primary margin-none">25</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class = "panel-body">
-                                    @if(isset($options))
-                                        @foreach($options as $o => $option)
-                                            <div class="radio">
-                                                <label><input type="radio" name="answers[{{ $item->id }}]" id="question-option-{{ $option->id }}" value="{{ $option->id }}"> {{ $option->trans->option }}</label>
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                    {{--<button type="submit" class="btn btn-sm btn-warning pull-right" name="btn_next" id="btn_next" >Next →</button>--}}
+                                <div class="cell">
+                                    <div class="media width-120 v-middle margin-none">
+                                        <div class="media-left">
+                                            <div class="icon-block bg-grey-200 s30"><i class="fa fa-diamond"></i></div>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text-body-2 text-light margin-none">Score</p>
+                                            <p class="text-title text-success margin-none">800 pt</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            @php
-                                $i++;
-                            @endphp
-                        @endforeach
-                    @endif
-                    @if(isset($items))
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-sm btn-warning" name="btn_next" id="btn_next" >Next →</button>
                         </div>
-                    @endif
-                </form>
+                    </div>
+                    <div class="page-section equal">
+                        <div class="container-fluid">
+                            <form action="{{ action('QuizController@submitQuiz') }}" method="post" id="questionForm">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="text-subhead-2 text-light">Question 1 of {{ $items->count() }}</div>
+                                @if(isset($questions))
+                                    @php
+                                        $i=1;
+                                    @endphp
+                                    @foreach($questions as $qk => $question)
+                                        <div id="q<?php echo $qk;?>" class="panel panel-default paper-shadow" data-z="0.5">
+                                            <div class="panel-heading">
+                                                <h4 class="text-headline">#{{ $i }} {{ $question->trans->question_text }}</h4>
+                                            </div>
+                                            <input
+                                                    type="hidden"
+                                                    name="questions[{{ $i }}]"
+                                                    value="{{ $question->id }}">
+                                            <div class="panel-body">
+                                                @if(isset($question->options))
 
+                                                    @foreach($question->options as $ok => $option)
+                                                        @if($option->question_id == $question->id)
+                                                            <div class="radio radio-primary">
+                                                            {{--<div class="">--}}
+                                                                <input
+                                                                        type="radio"
+                                                                        name="answers[{{ $question->id }}]"
+                                                                        value="{{ $option->id }}">
+                                                                <label for="{{ $option->trans->option }}">{{ $option->trans->option }}</label>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @php
+                                            $i+=1;
+                                        @endphp
+                                    @endforeach
+                                    <div class="panel-footer">
+                                        <div class="text-right">
+                                            {{--<button type="submit" class="btn btn-success"><i class="fa fa-save fa-fw"></i> Save</button>--}}
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-chevron-right fa-fw"></i> Submit Quiz</button>
+                                        </div>
+                                    </div>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /st-content-inner -->
             </div>
+            <!-- /st-content -->
         </div>
+        @include('website.regions.footer-bottom')
     </div>
 @endsection
 @section('footer')
-    <script src="{{ asset('public/website_assets/js/tp_apidocs.js') }}"></script>
-    <script src="{{ asset('public/website_assets/js/tp_swiftype.js') }}"></script>
-    <script src="{{ asset('public/website_assets/js/learn.js') }}"></script>
+{{--    <script src="{{ asset('public/website_assets/js/customize/quiz.js') }}" type="text/javascript" ></script>--}}
+    {{--<script type="text/javascript">--}}
+        {{--var selectedBox = null;--}}
+        {{--$(document).ready(function() {--}}
+            {{--$(".question-option").click(function() {--}}
+                {{--selectedBox = this.id;--}}
+                {{--$(".question-option").each(function() {--}}
+                    {{--if ( this.id == selectedBox )--}}
+                    {{--{--}}
+                        {{--this.checked = true;--}}
+                    {{--}--}}
+                    {{--else--}}
+                    {{--{--}}
+                        {{--this.checked = false;--}}
+                    {{--};--}}
+                {{--});--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @stop

@@ -27,6 +27,9 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => $locale . '/admin'],
     Route::GET('courses/sections/{course_id}/{id}/edit', 'UiStacks\Tutorials\Controllers\SectionsController@edit');
     Route::PATCH('courses/sections/{id}', 'UiStacks\Tutorials\Controllers\SectionsController@update');
     Route::POST('sections/bulk-operations', 'UiStacks\Tutorials\Controllers\SectionsController@bulkOperations');
+    //change section order
+    Route::POST('section-reposition', 'UiStacks\Tutorials\Controllers\SectionsController@sectionReposition');
+
     //Tutorials
     Route::GET('tutorials', 'UiStacks\Tutorials\Controllers\TutorialsController@index');
     Route::GET('tutorials/create', 'UiStacks\Tutorials\Controllers\TutorialsController@create');

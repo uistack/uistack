@@ -1,50 +1,39 @@
-<div id="cb-sidebar" data-swiftype-index="false">
-    <div id="cb-sidebar-overlay"></div>
-    <div id="cb-guide">
-        <div class="cb-sidebar-header hidden-sm hidden-xs">
-            <div class="cb-sidebar-logo">
-                <a href="{{ url("/") }}">
-                    <span><img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" alt="UiStacks" width="24" style="height:24px;"></span>
-                    <span class="cb-sidebar-logo-title">UiStacks</span>
-                </a>
-            </div>
-            {{--<div class="cb-sidebar-version">--}}
-            {{--<a href="https://apidocs.chargebee.com/docs/api"  class="active">V2</a>--}}
-            {{--<a href="https://apidocs.chargebee.com/docs/api/v1">V1</a>--}}
-            {{--</div>--}}
-        </div>
-        <div class="cb-sidebar-divider hidden-sm hidden-xs"></div>
-
-        <div class="cb-doc-search">
-            <!-- Search template starts here. Do not make change in any custom attribute or id  -->
-            <form id="swift-search-form" data-cb-type="api" autocomplete="false">
-                <div class="input-group">
-                    <input class="form-control" placeholder="Search" autofocus="autofocus" type="text" data-cb-search="input"/>
-                    <span class="input-group-btn">
-                                        <input value="" type="submit" class="btn btn-primary"/>
-                                    </span>
-                </div>
-            </form>
-            <!-- Search template ends here-->
-        </div>
-        @if(isset($sections))
-            @foreach($sections as $sc)
-                <h4 class="cb-aside-nav-title">{{ $sc->trans->title }}</h4>
-                @php
-                    $arrContents = UiStacks\Tutorials\Models\Tutorial::where('section_id', $sc->id)->where('active', 1)->get();
-                @endphp
-                <ul class="list-group">
-                    @if(isset($arrContents))
-                        @foreach($arrContents as $c)
-                            <li>
-                                <a href="{{ action('LearnController@index',[$item->slug,$c->slug]) }}" class="list-group-item">
-                                    {{ $c->trans->name }}
-                                </a>
+<div class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu" data-type="collapse">
+    <div data-scrollable>
+        <ul class="sidebar-menu sm-icons-right">
+            <li><a href="{{ action('WebsiteController@dashboard') }}"><i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
+            @php
+                $arrCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->get();
+            @endphp
+            <li class="hasSubmenu active open">
+                <a href="#course-menu"><i class="fa fa-mortar-board"></i><span>Courses</span></a>
+                <ul id="course-menu" class="in">
+                    @if(isset($arrCourses))
+                        @foreach($arrCourses as $course)
+                            <li class="@if(\Request::segment(1)== $course->slug) active @endif">
+                                <a href="{{ action('LearnController@index',$course->slug) }}">{{ $course->trans->name }}</a>
                             </li>
                         @endforeach
                     @endif
                 </ul>
-            @endforeach
-        @endif
+            </li>
+            <li class="hasSubmenu">
+                <a href="#forum-menu"><i class="fa fa-file-text-o"></i><span>Forum</span></a>
+                <ul id="forum-menu">
+                    <li><a href="app-forum.html"><span>Forum Home</span></a></li>
+                    <li><a href="app-forum-category.html"><span>Forum Category</span></a></li>
+                    <li><a href="app-forum-thread.html"><span>Forum Thread</span></a></li>
+                </ul>
+            </li>
+            <li class="hasSubmenu">
+                <a href="#account-menu"><i class="fa fa-user"></i><span>Account</span></a>
+                <ul id="account-menu">
+                    <li><a href="app-student-profile.html"><span>Edit Profile</span></a></li>
+                    <li><a href="app-student-billing.html"><span>Edit Billing</span></a></li>
+                </ul>
+            </li>
+            <li><a href="app-student-messages.html"><i class="fa fa-comments"></i><span>Messages</span></a></li>
+            <li><a href="login.html"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+        </ul>
     </div>
 </div>

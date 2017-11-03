@@ -1,163 +1,131 @@
-<div class="cb-toasts">
-    <!--LOOP - more than one toast-->
-</div>
-<div class="cn-header" style="border-top-color:#503CC8;">
-    <div class="cn-container">
-        <div class="cn-header__container">
-            <div class="cn-header__brand">
-                <a href="{{ url("/") }}" tabindex="-1" class="cn-header__logo"><img src="{{ url("/") }}/public/website_assets/img/ui-stacks.png" width="30" hight="30"/>UiStacks</a>
+<div class="navbar navbar-size-large navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand navbar-brand-logo navbar-nav-padding-left">
+                <a class="svg" href="{{ url("/") }}">
+                    <img src="{{ url("/") }}/public/website_assets/img/logo.png" alt="UiStacks" />
+                </a>
             </div>
-            <div class="cn-header__nav">
-                <div  id="cb-main-tab"  class="cn-nav" >
-                    <div  class="cn-nav__list" >
-                        <a class="cn-nav__item" href="{{ url("/") }}" >Home</a>
-                        <a class="cn-nav__item" href="{{ action('LearnController@learn') }}" >Tutorials</a>
-                        <a class="cn-nav__item" href="{{ action('QuizController@quiz') }}" >Quiz</a>
-                        {{--<a class="cn-nav__item cn-nav__item--active " href="/settings" >Settings</a>--}}
-                    </div>
-                </div>
-            </div>
-            <div class="cn-header__actions cn-header__optional">
-                {{--<div class="cn-header__action">--}}
-                    {{--<span class="cn-header__featured" id="new_feature_notification" style="color:#FFB16B">What's New?</span>--}}
-                {{--</div>--}}
-                <div class="cn-header__action">
-                    <a href="{{ action("WebsiteController@createContact")}}" target="_blank" class="cn-header__help">Help Center</a>
-                </div>
-            </div>
-            <div class="cn-header__actions">
-                <div class="cn-header__action" >
-                    <div class="cn-account" data-cb-account-nav="true">
-                        <div class="cn-account__profile" style="color:#FFB16B">
-                            <div class="cn-account__name">{{Auth::user()->name}}</div>
-                            <div class="cn-account__arrow">
-                                <svg width="12px" height="9px" viewBox="0 0 12 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                                    <defs>
-                                        <path d="M0,0 L12,0 L12,9 L0,9 L0,0 Z">
-                                        </path>
-                                    </defs>
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                                        <g sketch:type="MSLayerGroup">
-                                            <mask sketch:name="Clip 2" fill="white">
-                                                <use xlink:href="#path-1">
-                                                </use>
-                                            </mask>
-                                            <g>
-                                            </g>
-                                            <path d="M12.0003,1.9997 C12.0003,0.8957 11.1043,-0.0003 10.0003,-0.0003 L2.0003,-0.0003 C0.8953,-0.0003 0.0003,0.8957 0.0003,1.9997 L0.0003,6.9997 C0.0003,8.1047 0.8953,8.9997 2.0003,8.9997 L10.0003,8.9997 C11.1043,8.9997 12.0003,8.1047 12.0003,6.9997 L12.0003,1.9997 Z M9.4173,3.6427 L6.1953,6.7217 C6.1403,6.7737 6.0753,6.7997 6.0003,6.7997 C5.9253,6.7997 5.8603,6.7737 5.8053,6.7217 L2.5823,3.6427 C2.5273,3.5897 2.5003,3.5267 2.5003,3.4537 C2.5003,3.3797 2.5273,3.3167 2.5823,3.2647 L3.3033,2.5797 C3.3583,2.5267 3.4243,2.4997 3.4993,2.4997 C3.5743,2.4997 3.6393,2.5267 3.6943,2.5797 L6.0003,4.7857 L8.3063,2.5797 C8.3613,2.5267 8.4263,2.4997 8.5013,2.4997 C8.5763,2.4997 8.6423,2.5267 8.6973,2.5797 L9.4173,3.2647 C9.4733,3.3167 9.5003,3.3797 9.5003,3.4537 C9.5003,3.5267 9.4733,3.5897 9.4173,3.6427 L9.4173,3.6427 Z" id="Fill-1" fill="currentColor" sketch:type="MSShapeGroup" mask="url(#mask-2)">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </svg>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="nav navbar-nav">
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="active"><a href="{{ url("/") }}">Home page</a></li>
+                        <li><a href="{{ action('CmsController@showPage','about-us') }}">About Us</a></li>
+                        <li><a href="{{ action("WebsiteController@createContact")}}">Contact</a></li>
+                        <li><a href="{{ action('BlogController@index') }}">Blog</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @php
+                            $arrCourses = \UiStacks\Tutorials\Models\Course::where('active', 1)->take(4)->get();
+                        @endphp
+                        @if(isset($arrCourses))
+                            @foreach($arrCourses as $course)
+                                <li>
+                                    <a href="{{ action('LearnController@index',$course->slug) }}">{{ $course->trans->name }}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </li>
+                @php
+                    $arrTopics = \UiStacks\Uiquiz\Models\Topic::where('active', 1)->take(4)->get();
+                @endphp
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @if(isset($arrTopics))
+                            @foreach($arrTopics as $topic)
+                                <li class="">
+                                    <a href="{{ action('QuizController@index',$topic->slug) }}">{{ $topic->trans->title }}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-nav-bordered navbar-right">
+                <!-- notifications -->
+                <li class="dropdown notifications updates">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge badge-primary">4</span>
+                    </a>
+                    <ul class="dropdown-menu" role="notification">
+                        <li class="dropdown-header">Notifications</li>
+                        <li class="media">
+                            <div class="pull-right">
+                                <span class="label label-success">New</span>
                             </div>
-                        </div>
-                        <div class="cn-account__container" data-cb-account-content="true">
-                            <div class="cn-account__content">
-                                <div class="cn-account__site test">
-                                    <div class="cn-account__site-header">
-                                        <div class="cn-account__site-title">{{Auth::user()->name}}</div>
-                                        <div class="cn-account__site-label test">{{Auth::user()->email}}</div>
-                                    </div>
-                                    <div class="cn-account__site-list">
-                                        <div class="cn-account__site-item">
-                                            <a id ="acc_enable_live" href="{{ action('WebsiteController@dashboard') }}" style="text-decoration: none">Dashboard</a>
-                                        </div>
-                                        <div class="cn-account__site-item">
-                                            <a href="{{ action('LearnController@learn') }}"> Tutorials</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cn-account__list">
-                                    <div class="cn-account__item">
-                                        <div class="cn-account__item-title">{{Auth::user()->name}}</div>
-                                        <div class="cn-account__item-text">{{Auth::user()->email}}</div>
-                                        <div class="cn-account__item-action">
-                                            <a class="cn-account__anchor" href="{{ action('WebsiteController@editProfile') }}">Edit Profile</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="cn-account__logout cn-js--disable"  href="{{ action('WebsiteController@logout') }}"  class=" cn-account__logout cn-js--disable"  id="users.logout" >
-                                    Sign out
+                            <div class="media-left">
+                                <img src="images/people/50/guy-2.jpg" alt="people" class="img-circle" width="30">
+                            </div>
+                            <div class="media-body">
+                                <a href="#">Adrian D.</a> posted <a href="#">a photo</a> on his timeline.
+                                <br/>
+                                <span class="text-caption text-muted">5 mins ago</span>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="pull-right">
+                                <span class="label label-success">New</span>
+                            </div>
+                            <div class="media-left">
+                                <img src="images/people/50/guy-6.jpg" alt="people" class="img-circle" width="30">
+                            </div>
+                            <div class="media-body">
+                                <a href="#">{{ Auth::user()->name }}</a> posted <a href="#">a comment</a> on Adrian's recent <a href="#">post</a>.
+                                <br/>
+                                <span class="text-caption text-muted">3 hrs ago</span>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left">
+                                <span class="icon-block s30 bg-grey-200"><i class="fa fa-plus"></i></span>
+                            </div>
+                            <div class="media-body">
+                                <a href="#">Mary D.</a> and <a href="#">Michelle</a> are now friends.
+                                <p>
+                                    <span class="text-caption text-muted">1 day ago</span>
+                                </p>
+                                <a href="">
+                                    <img class="width-30 img-circle" src="images/people/50/woman-6.jpg" alt="people">
+                                </a>
+                                <a href="">
+                                    <img class="width-30 img-circle" src="images/people/50/woman-3.jpg" alt="people">
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cn-header__action">
-                    <!--don't remove the <span>-->
-                    {{--<a id="acc_enable_live" href="/sites/enable_live" class="cn-site-label cn-site-label--go-live" style="text-decoration: none">Go Live!</a>--}}
-                    <span id="site_help" data-modal="#modal" class="modal__trigger cb-mdl-mig_trigger" style="display: inline-block;"><span class="cn-site--help"></span></span>
-                </div>
-                <div id="cb-alert-claim" style="display:none;">
-                    <div class="cn-modal cn-modal-verify cn-modules">
-                        <div class="cn-modal__wrap">
-                            <div class="cn-modal__container cn-modal-verify__container">
-                                <div class="cn-modal-verify__main">
-                                    <div class="cn-modal-verify__aside">
-                                        <div class="cn-modal-verify__icon">
-                                        </div>
-                                    </div>
-                                    <div class="cn-modal-verify__content">
-                                        <div class="cn-modal-verify__title">Hello there!
-                                        </div>
-                                        <div class="cn-modal-verify__desc">
-                                            Looks like you haven't completed your account setup. Why don't you check your inbox for our email?
-                                        </div>
-                                        <div class="cn-modal-verify__text">
-                                            Can't find it?
-                                            <div  class="cb-form-container" >
-                                                <form  id="users_resend_registration_auth"  name="users_resend_registration_auth"  method="post"  action="/users/resend_registration_auth"  ajax="true"  ajaxEvent="formhandler"  autocomplete="on"  data-loading-text="Loading..."  validate="true" >
-                                                    <a id="cb-alert-resend-mail">Resend email
-                                                    </a>
-                                                    <input type='hidden' name='_csrf_token'  value="myOjV3CdrVcuAnJllv2EvuUxxpLakHHL8" />
-                                                </form>
-                                            </div>
-                                            <script>var users_resend_registration_auth = {
-                                                    "validators":{
-                                                    }
-                                                    ,"strategy":"onsubmit","stripEmptyParams":false};
-                                            </script>
-                                        </div>
-                                        <div class="cn-modal-verify__action">
-                                            <span id="cb-alert-claim-close" class="cn-btn cn-btn--raised cn-btn--primary">Okay, got it</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cn-modal-overlay">
-                    </div>
-                </div>
-
-            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- // END notifications -->
+                <!-- User -->
+                <li class="dropdown">
+                    <a @if(Auth::guest()) href="{{ action('WebsiteController@login') }}" @else href="#" class="dropdown-toggle" data-toggle="dropdown" @endif>
+                        <img src="{{url('/')}}/public/website_assets/img/user.png" alt="" class="img-circle" />@if(!Auth::guest()) {{ $item->name }} @endif <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ action('WebsiteController@dashboard') }}"><i class="fa fa-bar-chart-o"></i> Dashboard</a></li>
+                        {{--<li><a href="website-student-courses.html"><i class="fa fa-mortar-board"></i> My Courses</a></li>--}}
+                        <li><a href="{{ action('WebsiteController@profile') }}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="{{ action('WebsiteController@logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+        <!-- /.navbar-collapse -->
     </div>
 </div>
-<div class="cn-header-sub">
-    <div class="cn-container">
-        <div class="cn-header-sub__nav">
-            <a class="cn-header-sub__nav-item active" href="{{ action('WebsiteController@dashboard') }}">Dashboard</a>
-            <a class="cn-header-sub__nav-item" href="{{ action('WebsiteController@profile') }}">Profile</a>
-            <a class="cn-header-sub__nav-item" href="{{ action('WebsiteController@accountSetting') }}">Settings</a>
-        </div>
-    </div>
-</div>
-<div class="cb-scroll-fix">
-</div>
-<div class="cb-loading">Processing...
-</div>
-<div class="cb-status-flash cb-main-status">
-    <p>
-    </p>
-</div>
-<script>
-    $('.cb-apiLink').click(function(){
-            $('#cb-apiLink').submit();
-        }
-    );
-    $('.cb-importdocLink').click(function(){
-            $('#cb-importdocLink').submit();
-        }
-    );
-</script>

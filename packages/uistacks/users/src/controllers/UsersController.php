@@ -198,7 +198,7 @@ class UsersController extends UsersApiController {
     public function changeStatus(Request $request) {
         if ($request->user_id != "") {
             /* updating the user status. */
-            $arr_to_update = array("active" => $request->user_status);
+            $arr_to_update = array("active" => $request->user_status,'confirmed'=>1);
             /* updating the user status  value into database */
             User::where('id', $request->user_id)->update($arr_to_update);
             echo json_encode(array("error" => "0"));

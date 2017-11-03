@@ -13,7 +13,8 @@ use UiStacks\Tutorials\Models\Comment;
 use UiStacks\Tutorials\Models\CommentTrans;
 use UiStacks\Settings\Models\Setting;
 use Lang;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 //use UiStacks\Tutorials\Models\Section;
 
 class SectionsController extends SectionsApiController {
@@ -165,6 +166,25 @@ class SectionsController extends SectionsApiController {
             return back();
         } else {
             return back();
+        }
+    }
+
+    function sectionReposition(Request $request){
+        if(Input::has('item'))
+        {
+            $i = 0;
+            foreach(Input::get('item') as $id)
+            {
+                $i++;
+                $item = Section::find($id);
+                $item->order_id = $i;
+                $item->save();
+            }
+            return Response::json(array('success' => true));
+        }
+        else
+        {
+            return Response::json(array('success' => false));
         }
     }
 

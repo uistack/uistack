@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use UiStacks\Activities\Models\Activity;
 use UiStacks\Countries\Models\Country;
 use UiStacks\Countries\Models\CountryTrans;
@@ -36,6 +37,7 @@ use Socialite;
 //use Twitter;
 ## or
 use SEO;
+use Illuminate\Support\Facades\URL;
 
 class WebsiteController extends Controller {
 
@@ -190,23 +192,58 @@ class WebsiteController extends Controller {
         return view('website.auth.register', compact('countries'));
     }
 
+    protected function validatation(Request $request)
+    {
+//        dd($request);
+        $validator = Validator::make($request->all(),
+            [
+//                'first_name'            => 'required',
+//                'last_name'             => 'required',
+                'name'                  => 'required',
+                'email'                 => 'required|email|unique:users',
+                'phone'                 => 'required|numeric|unique:users',
+                'password'              => 'required|min:6|max:20',
+                'password_confirmation' => 'required|same:password',
+//                'g-recaptcha-response'  => 'required',
+//                'captcha'               => 'required|min:1'
+            ],
+            [
+//                'first_name.required'   => 'First Name is required',
+//                'last_name.required'    => 'Last Name is required',
+                'name.required'         => 'Name is required',
+                'email.required'        => 'Email is required',
+                'email.email'           => 'Email is invalid',
+                'phone.required'        => 'Phone is invalid',
+                'password.required'     => 'Password is required',
+                'password.min'          => 'Password needs to have at least 6 characters',
+                'password.max'          => 'Password maximum length is 20 characters',
+//                'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+//                'captcha.min'           => 'Wrong captcha, please try again.'
+            ]
+        );
+        return $validator;
+    }
     /**
      * Auth register
      *
      * @var view
      */
     public function postRegister(Request $request) {
-//        error_reporting(E_ALL);
-//        ini_set('display_errors','on');
-//        dd($request);
-        $this->validate($request, [
+        $validator = $this->validatation($request);
+        if ($validator->fails()) {
+            return redirect(URL::previous())
+                ->withErrors($validator)
+                ->withInput();
+        }
+        /*$this->validate($request, [
             'name' => 'required|unique:users|max:255',
             //            'country' => 'required',
             //            'area' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'required|numeric|unique:users',
             'password' => 'required|confirmed|min:6|max:20',
-        ]);
+            'g-recaptcha-response' => 'required|captcha',
+        ]);*/
         $emaiUsername = explode('@',$request->email);
         $activation_code = $this->generateReferenceNumber();
         $user = new User;
@@ -937,16 +974,16 @@ class WebsiteController extends Controller {
         $password = bcrypt($user_password);
         $confirmation_code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
         return User::create([
-                                'name'     => $user->name,
-                                'email'    => $user->email,
-                                'password' => $password,
-                                'gender'   => $gender,
-                                'active'   => "1",
-                                'confirmed'   => "1",
-                                'provider' => $provider,
-                                'provider_id' => $user->id,
-                                'confirmation_code'=>$confirmation_code
-                            ]);
+            'name'     => $user->name,
+            'email'    => $user->email,
+            'password' => $password,
+            'gender'   => $gender,
+            'active'   => "1",
+            'confirmed'   => "1",
+            'provider' => $provider,
+            'provider_id' => $user->id,
+            'confirmation_code'=>$confirmation_code
+        ]);
     }
 
     function randomNum($size) {
@@ -962,6 +999,22 @@ class WebsiteController extends Controller {
             $key .= $keys[array_rand($keys)];
         }
         return $alpha_key . $key;
+    }
+
+    //account settings
+    function accountSetting(Request $request){
+//        dd($request);
+        $this->redirectWhenInactive();
+        if (isset(Auth::user()->id)) {
+            $item = User::findOrFail(Auth::user()->id);
+            $countries = Country::where('active', 1)->get();
+            $areas = Area::where('country_id', $item->country_id)->get();
+            $edit = 1;
+//dd($item);
+            return view('website.profile.account-setting', compact('item', 'countries', 'areas'));
+        } else {
+            return redirect(action('WebsiteController@index'));
+        }
     }
 
 }

@@ -53,8 +53,8 @@ class SectionsApiController extends Controller
      */
     public function listItems(Request $request, $id)
     {
-        $contactrequest = Section::where('course_id',$id)->FilterStatus()->orderBy('id', 'DESC')->paginate($request->get('paginate'));
-        return $contactrequest;
+        $courseSection = Section::where('course_id',$id)->FilterStatus()->orderBy('order_id', 'ASC')->paginate($request->get('paginate'));
+        return $courseSection;
     }
     /**
      * @param

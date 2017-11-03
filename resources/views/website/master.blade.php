@@ -1,6 +1,12 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="@if(\Request::segment(2) =="login" || \Request::segment(2) =='register') hide-sidebar ls-bottom-footer @elseif(\Request::segment(2) == "user") st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3 @elseif(\Request::segment(1) !="") st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l1 sidebar-r3 @else transition-navbar-scroll top-navbar-xlarge bottom-footer @endif" lang="en">
 <head>
+    {{--<meta charset="utf-8">--}}
+    {{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
+    {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
+    {{--<meta name="description" content="">--}}
+    {{--<meta name="author" content="">--}}
+    {{--<title>Learning</title>--}}
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>{{ \UiStacks\Settings\Models\Setting::find(1)->value }} - Web Design & Developer Console</title>
     <meta charset="utf-8">
@@ -27,86 +33,121 @@
     {{--<meta name="twitter:creator" content="@uistacks">--}}
     {{--<meta name="twitter:image:src" content="static/resources/og-image.png">--}}
     <meta name="twitter:domain" content="https://www.uistacks.com/">
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/materialize.min.css') }}" />--}}
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/burger-menu.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/new.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/header.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/website_assets/css/footer.css') }}" />
-    <meta name="msvalidate.01" content="2541484BA40CEA7D4C741B000D54FFA3" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    {{--<script src="{{ asset('public/website_assets/js/vwo.js') }}"></script>--}}
+
+
+    <!-- Compressed Vendor BUNDLE
+    Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
+    <link href="{{ asset('public/website_assets/css/vendor.min.css') }}" rel="stylesheet">
+    <!-- Compressed Theme BUNDLE
+Note: The bundle includes all the custom styling required for the current theme, however
+it was tweaked for the current theme/module and does NOT include ALL of the standalone modules;
+The bundle was generated using modern frontend development tools that are provided with the package
+To learn more about the development process, please refer to the documentation. -->
+    <!-- <link href="css/theme.bundle.min.css" rel="stylesheet"> -->
+    <!-- Compressed Theme CORE
+This variant is to be used when loading the separate styling modules -->
+    <link href="{{ asset('public/website_assets/css/theme-core.min.css') }}" rel="stylesheet">
+    <!-- Standalone Modules
+    As a convenience, we provide the entire UI framework broke down in separate modules
+    Some of the standalone modules may have not been used with the current theme/module
+    but ALL modules are 100% compatible -->
+    <link href="{{ asset('public/website_assets/css/module-essentials.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-material.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-layout.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-sidebar.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-sidebar-skins.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-navbar.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-messages.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-carousel-slick.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-charts.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-maps.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-colors-alerts.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-colors-background.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-colors-buttons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('public/website_assets/css/module-colors-text.min.css') }}" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- in your header -->
+    <link rel="stylesheet" href="{{ asset('public/website_assets/css/devicon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/website_assets/css/devicon-colors.css') }}">
+    <script src="{{ asset('public/website_assets/js/jquery-3.1.1.min.js') }}" type="text/javascript" ></script>
     @yield('header')
 </head>
+{{--<body class="@if(\Request::segment(2) =="login" || \Request::segment(2) =='register') login @endif">--}}
+<body>
+<!-- Fixed navbar -->
 
-{{--<body class="body">--}}
-<body class="">
 @include('website.blocks.message')
-<!-- =====================================================================================
-Header Part start
-====================================================================================== -->
-
-
-<!-- =====================================================================================
-Mobile Header start
-====================================================================================== -->
-
-<!-- =====================================================================================
-Mobile Header end
-====================================================================================== -->
-<!-- =====================================================================================
-Header Part end
-====================================================================================== -->
 <!-- Start Main Body Content -->
 @yield('content')
-
-
-<!-- End Main Body Content -->
-
-<!-- =====================================================================================
-Footer Part start
-====================================================================================== -->
-
-<!-- =====================================================================================
-Footer Part end
-====================================================================================== -->
-<!-- =====================================================================================
-Logo asset download start
-====================================================================================== -->
-
-<!-- =====================================================================================
-Logo asset download End
-====================================================================================== -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="{{ asset('public/website_assets/js/mustache.js') }}"></script>
-{{--<script src="{{ asset('public/website_assets/js/tp_snippets.js') }}"></script>--}}
-{{--<script>--}}
-    {{--TpJsSnippet.init("website");--}}
-{{--</script>--}}
-<script src="{{ asset('public/website_assets/js/application.js') }}"></script>
-<!-- Hover trigger security popover -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#popoverData').popover({
-            placement: 'top',
-            trigger: 'hover',
-            html: true,
-            content: '<div class="blk-security-pop"><div class="blk-security-text">UiStacks is compliant with PCI-DSS and the EU-U.S. Privacy Shield Framework. Your data is safe with us.</div><div class="blk-security-images"><div class="blk-security-image"><img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/privacy/control-case-logo.png" alt="" height="30"></div><div class="blk-security-image"><img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/privacy/pci-logo.png" alt="" height="30"></div><div class="blk-security-image"><img src="https://d2jxbtsa1l6d79.cloudfront.net/assets/web/9.4.0/images/privacy/truste-logo.png" alt="" height="40"></div></div></div>'
-        });
-    });
+<!-- Inline Script for colors and config objects; used by various external scripts; -->
+<script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "html",
+        skins: {
+            "default": {
+                "primary-color": "#42a5f5"
+            }
+        }
+    };
 </script>
-<!--typekit async-->
-{{--<script type="text/javascript" src="{{ asset('public/website_assets/js/typekit-dyq8zgf.js') }}"></script>--}}
-<!--begin Control Case ASV PCI code-->
-{{--<script language='javascript'>--}}
-    {{--function CCPopUp(SEALURL, cId) {--}}
-        {{--window.open("" + SEALURL + "index.php?page=showCert&cId=" + cId + "", "win", 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=700,height=585');--}}
-        {{--self.name = "mainWin";--}}
-    {{--}--}}
-{{--</script>--}}
-<!--end Control Case ASV PCI code-->
+<!-- Separate Vendor Script Bundles -->
+<script src="{{ asset('public/website_assets/js/vendor-core.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-countdown.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-tables.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-forms.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-carousel-slick.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-player.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-charts-flot.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/vendor-nestable.min.js') }}"></script>
+<!-- <script src="js/vendor-angular.min.js"></script> -->
+<!-- Compressed Vendor Scripts Bundle
+Includes all of the 3rd party JavaScript libraries above.
+The bundle was generated using modern frontend development tools that are provided with the package
+To learn more about the development process, please refer to the documentation.
+Do not use it simultaneously with the separate bundles above. -->
+<!-- <script src="js/vendor-bundle-all.min.js"></script> -->
+<!-- Compressed App Scripts Bundle
+Includes Custom Application JavaScript used for the current theme/module;
+Do not use it simultaneously with the standalone modules below. -->
+<!-- <script src="js/module-bundle-main.min.js"></script> -->
+<!-- Standalone Modules
+As a convenience, we provide the entire UI framework broke down in separate modules
+Some of the standalone modules may have not been used with the current theme/module
+but ALL the modules are 100% compatible -->
+<script src="{{ asset('public/website_assets/js/module-essentials.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-material.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-layout.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-sidebar.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-carousel-slick.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-player.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-messages.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-maps-google.min.js') }}"></script>
+<script src="{{ asset('public/website_assets/js/module-charts-flot.min.js') }}"></script>
+<!-- [html] Core Theme Script:
+    Includes the custom JavaScript for this theme/module;
+    The file has to be loaded in addition to the UI modules above;
+    module-bundle-main.js already includes theme-core.js so this should be loaded
+    ONLY when using the standalone modules; -->
+<script src="{{ asset('public/website_assets/js/theme-core.min.js') }}"></script>
 @yield('footer')
 </body>
 </html>

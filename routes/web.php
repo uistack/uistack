@@ -129,9 +129,12 @@ Route::post('post-comment/{slug}', 'BlogController@comment');
 /*
  * QUIZ ROUTE START HERE
  */
-Route::get('quiz', 'QuizController@quiz');
-Route::get('quiz/{slug}', 'QuizController@index');
-Route::post('submit-quiz', 'QuizController@submitQuiz');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('quiz', 'QuizController@quiz');
+    Route::get('quiz/{slug}', 'QuizController@index');
+    Route::post('submit-quiz', 'QuizController@submitQuiz');
+    Route::get('quiz-result', 'QuizController@quizResult');
+});
 /*
  * QUIZ ROUTE END HERE
  */

@@ -16,6 +16,9 @@
 @section('page_title')
     {{ trans('Tutorials::tutorials.sections') }}
 @endsection
+@section('header')
+    <link rel="stylesheet" href="{{ asset('public/website_assets/css/jquery-ui/jquery-ui.min.css') }}" />
+@endsection
 @section('content')
     <!-- Include single delete confirmation model -->
     @include('Core::modals.confirm-delete')
@@ -52,7 +55,7 @@
                             @if(isset($items))
                                 @foreach($items as $item)
                                     @if(isset($item->trans))
-                                        <tr @if($item->trans) data-title="{{ $item->trans->name }}" @endif>
+                                        <tr id="item-{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif>
                                             <td>
                                                 <input type="checkbox" name="ids[]" class="check_list" value="{{$item->id}}">
                                             </td>
@@ -113,8 +116,30 @@
     </div>
 @endsection
 @section('footer')
+    <script src="{{ asset('public/website_assets/js/jquery-ui.min.js') }}"></script>
     <!--jquery-dependency-fields -->
     <script src="/vendor/core/js/jquery-dependency-fields/scripts.js"></script>
     <!--end jquery-dependency-fields -->
     <script src="{{ asset('public/admin_assets/js/index-operations.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("tbody").sortable({
+                axis: 'y',
+                update: function (event, ui) {
+                    var data = $(this).sortable('serialize');
+                    // POST to server using $.post or $.ajax
+                    $.ajax({
+                        type:"POST",
+                        url:"{{ action('\UiStacks\Tutorials\Controllers\SectionsController@sectionReposition') }}",
+                        dataType:"html",
+                        data: data,
+                        success:function(response){
+                            alert('You have successfully change the banner order..!')
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
